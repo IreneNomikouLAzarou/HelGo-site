@@ -315,10 +315,7 @@
       document.addEventListener('DOMContentLoaded', () => {
         const saved = localStorage.getItem('siteLang') || 'el';
         setLang(saved);
-        // Optional: open the default tab for the chosen language
-        const defaultId = saved === 'el' ? 'home-el' : 'home-en';
-        const t = document.getElementById(defaultId);
-        if (t) t.style.display = 'block';
+     
       });
   </script>
 </body>
