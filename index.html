@@ -1,337 +1,585 @@
 <!doctype html>
 <html lang="el">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
-  <title>ΕΛΛΗΝΙΚΟ ΠΑΡΑΤΗΡΗΤΗΡΙΟ ΑΡΓΥΡΟΧΡΥΣΟΧΟΪΑΣ ΚΑΙ ΚΟΣΜΗΜΑΤΟΠΟΙΙΑΣ</title>
-  <meta name="description" content="Ένας χώρος έρευνας για το ελληνικό κόσμημα που χαρτογραφεί το σύστημα πολιτισμού, οικονομίας και τεχνικής εκπαίδευσης στην αργυροχρυσοχοΐα, σε διάλογο με τις διεθνείς και εγχώριες τάσεις." />
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="ΕΛΛΗΝΙΚΟ ΠΑΡΑΤΗΡΗΤΗΡΙΟ ΑΡΓΥΡΟΧΡΥΣΟΧΟΪΑΣ ΚΑΙ ΚΟΣΜΗΜΑΤΟΠΟΙΙΑΣ" />
-  <meta property="og:description" content="Ένας χώρος έρευνας για το ελληνικό κόσμημα που χαρτογραφεί το σύστημα πολιτισμού, οικονομίας και τεχνικής εκπαίδευσης στην αργυροχρυσοχοΐα, σε διάλογο με τις διεθνείς και εγχώριες τάσεις." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://IreneNomikoulAzarou.github.io/HelGo-site/Logo.png" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>ΕΛΛΗΝΙΚΟ ΠΑΡΑΤΗΡΗΤΗΡΙΟ ΑΡΓΥΡΟΧΡΥΣΟΧΟΪΑΣ ΚΑΙ ΚΟΣΜΗΜΑΤΟΠΟΙΙΑΣ</title>
+<meta name="description" content="Ένας χώρος έρευνας για το ελληνικό κόσμημα που χαρτογραφεί το σύστημα πολιτισμού, οικονομίας και τεχνικής εκπαίδευσης στην αργυροχρυσοχοΐα, σε διάλογο με τις διεθνείς και εγχώριες τάσεις." />
+<!-- Open Graph -->
+<meta property="og:title" content="ΕΛΛΗΝΙΚΟ ΠΑΡΑΤΗΡΗΤΗΡΙΟ ΑΡΓΥΡΟΧΡΥΣΟΧΟΪΑΣ ΚΑΙ ΚΟΣΜΗΜΑΤΟΠΟΙΙΑΣ" />
+<meta property="og:description" content="Ένας χώρος έρευνας για το ελληνικό κόσμημα που χαρτογραφεί το σύστημα πολιτισμού, οικονομίας και τεχνικής εκπαίδευσης στην αργυροχρυσοχοΐα, σε διάλογο με τις διεθνείς και εγχώριες τάσεις." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://IreneNomikoulAzarou.github.io/HelGo-site/Logo.png" />
+<style>
+:root {
+  --header-bg: #fff;
+  --text: #111;
+  --border: #eee;
+  --accent: #0aa78c;
+}
 
-  
-  <style>
-    :root { --header-bg:#fff; --text:#111; --border:#eee; }
+* {
+  box-sizing: border-box;
+}
 
-    * { box-sizing: border-box; }
-    html, body { margin: 0; overflow-x: hidden; }
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; color: var(--text); background:#fff; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.6;
+}
 
-    /* Header: logo left, language right; navigation centered below */
-    .site-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.75rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-      min-height: 88px;
-      background: var(--header-bg);
-    }
+/* Header: logo left, language right; navigation centered below */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  min-height: 88px;
+  background: var(--header-bg);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-    .site-header__brand { display:flex; align-items:center; gap:1rem; }
-    .site-header__logo { height: 100px; width: auto; }
-    .site-header__lang { display:flex; gap:.5rem; }
-    .site-header__lang button {
-      padding:.6rem .9rem;
-      border:1px solid #0aa78c;
-      background:#fff;
-      border-radius:6px;
-      font-weight:700;
-      color:var(--text);
-      cursor:pointer;
-    }
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
-    /* Centered navigation bar below header */
-    .main-nav {
-      display:flex;
-      justify-content:center;
-      gap:1rem;
-      padding:.75rem 1rem;
-      border-bottom:1px solid var(--border);
-      background:#fff;
-    }
-    .main-nav a, .main-nav button {
-      text-decoration:none;
-      color:var(--text);
-      font-weight:700;
-      padding:.25rem .5rem;
-      border-radius:6px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
+.site-header__logo {
+  height: 100px;
+  width: auto;
+  display: block;
+}
 
-    @media (max-width: 768px) {
-      body { overflow-x: hidden; }
-      .container { width: 100%; padding: 0 1rem; }
-    }
+.site-header__lang {
+  display: flex;
+  gap: 0.5rem;
+}
 
-   </style>
+.site-header__lang button {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--accent);
+  background: #fff;
+  border-radius: 6px;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.site-header__lang button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Centered navigation bar below header */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.main-nav a,
+.main-nav button {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Main container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+/* Tab sections */
+.tab {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.tab.active {
+  display: block !important;
+}
+
+/* Hero section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0;
+}
+
+.hero img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Team members */
+.member {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.member img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.member h3 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.member p {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.95rem;
+}
+
+/* Headings */
+h2 {
+  font-size: 1.75rem;
+  margin: 2rem 0 1rem 0;
+  color: var(--text);
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem 0;
+}
+
+/* Links */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-header {
+    padding: 1rem 1rem;
+    min-height: auto;
+  }
+
+  .site-header__brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .site-header__logo {
+    height: 80px;
+    width: auto;
+  }
+
+  .site-header__lang {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .main-nav {
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .main-nav a,
+  .main-nav button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 1rem 1rem;
+  }
+
+  .hero {
+    gap: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .hero img {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .member {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .member img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+
+  .member h3 {
+    text-align: center;
+  }
+
+  .member p {
+    text-align: left;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 0.75rem 0.75rem;
+  }
+
+  .site-header__logo {
+    height: 70px;
+  }
+
+  .site-header__lang button {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .main-nav {
+    gap: 0.35rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .main-nav a,
+  .main-nav button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .container {
+    padding: 1rem 0.75rem;
+  }
+
+  .hero h1 {
+    font-size: 1.2rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .member img {
+    width: 120px;
+    height: 120px;
+  }
+}
+</style>
 </head>
-  
 <body>
+<!-- Header: logo left, language right -->
+<header class="site-header" aria-label="Site header">
+  <div class="site-header__brand" aria-label="Branding">
+    <img id="brand-logo" class="site-header__logo" src="EPAK.png" alt="HelGO.png">
+  </div>
+  <div class="site-header__lang" aria-label="Language switch">
+    <button onclick="setLang('el')">GR</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
+</header>
 
-  <!-- Header: logo left, language right -->
-  <header class="site-header" aria-label="Site header">
-    <div class="site-header__brand" aria-label="Branding">
-      <img id="brand-logo" class="site-header__logo" src="EPAK.png" alt="HelGO.png">
-    </div>
+<script>
+// Logo swap per language
+const logos = {
+  el: { src: 'EPAK.png', alt: 'ΕΠΑΚ logo' },
+  en: { src: 'HelGO.png', alt: 'HelGO logo' }
+};
 
-    <div class="site-header__lang" aria-label="Language switch">
-      <button onclick="setLang('el')">GR</button>
-      <button onclick="setLang('en')">EN</button>
-    </div>
-  </header>
-
-  <script>
-  // java snipet to change logo per language 
-    const logos = {
-    el: {src: 'EPAK.png', alt: 'ΕΠΑΚ logo'},
-    en: {src: 'HelGO.png', alt: 'HelGO logo'}
-  };
-
-  // Optional: keep Greek/English menus in sync
-  function showHideMenus(lang) {
-    const greek = document.querySelector('.Greek-menu');
-    const english = document.querySelector('.English-menu');
-    if (greek && english) {
-      greek.style.display = (lang === 'el') ? 'inline' : 'none';
-      english.style.display = (lang === 'en') ? 'inline' : 'none';
-    }
+function showHideMenus(lang) {
+  const greek = document.querySelector('.Greek-menu');
+  const english = document.querySelector('.English-menu');
+  if (greek && english) {
+    greek.style.display = (lang === 'el') ? 'inline' : 'none';
+    english.style.display = (lang === 'en') ? 'inline' : 'none';
   }
+}
 
-  function setLang(lang) {
-    if (!logos[lang]) return;
-    // Swap logo
-    const logo = document.getElementById('brand-logo');
-    if (logo) {
-      logo.src = logos[lang].src;
-      logo.alt = logos[lang].alt;
-    }
-    // Optional: swap menus
-    showHideMenus(lang);
+function setLang(lang) {
+  if (!logos[lang]) return;
+  // Swap logo
+  const logo = document.getElementById('brand-logo');
+  if (logo) {
+    logo.src = logos[lang].src;
+    logo.alt = logos[lang].alt;
   }
+  // Swap menus and content
+  showHideMenus(lang);
+  
+  // Hide all sections
+  document.querySelectorAll('[id$="-el"], [id$="-en"]').forEach(sec => {
+    sec.style.display = 'none';
+  });
+  
+  // Show only sections in selected language
+  if (lang === 'el') {
+    document.querySelectorAll('[id$="-el"]').forEach(sec => {
+      sec.style.display = 'block';
+    });
+  } else {
+    document.querySelectorAll('[id$="-en"]').forEach(sec => {
+      sec.style.display = 'block';
+    });
+  }
+  
+  localStorage.setItem('siteLang', lang);
+}
 
-  // Initialize to Greek by default
-  document.addEventListener('DOMContentLoaded', () => setLang('el'));
+document.addEventListener('DOMContentLoaded', () => {
+  // Hide all sections except home on load
+  document.querySelectorAll('[id$="-el"], [id$="-en"]').forEach(sec => {
+    sec.style.display = 'none';
+  });
+  // Show only the home section in the saved language
+  const saved = localStorage.getItem('siteLang') || 'el';
+  document.getElementById('home-' + saved).style.display = 'block';
+  setLang(saved);
+});
 </script>
 
+<!-- Centered navigation bar; Greek items shown by default -->
+<nav class="main-nav" aria-label="Main navigation" id="main-nav">
+  <span class="lang-aware Greek-menu">
+    <a href="#" data-lang="el" onclick="openTab('home-el')">Αρχική</a>
+    <a href="#" data-lang="el" onclick="openTab('about-el')">Σχετικά</a>
+    <a href="#" data-lang="el" onclick="openTab('research-el')">Έρευνα</a>
+    <a href="#" data-lang="el" onclick="openTab('activities-el')">Δράσεις</a>
+    <a href="#" data-lang="el" onclick="openTab('contact-el')">Επικοινωνία</a>
+  </span>
+  <span class="lang-aware English-menu" style="display:none;">
+    <a href="#" data-lang="en" onclick="openTab('home-en')">Home</a>
+    <a href="#" data-lang="en" onclick="openTab('about-en')">About</a>
+    <a href="#" data-lang="en" onclick="openTab('research-en')">Research</a>
+    <a href="#" data-lang="en" onclick="openTab('activities-en')">Activities</a>
+    <a href="#" data-lang="en" onclick="openTab('contact-en')">Contact</a>
+  </span>
+</nav>
 
+<main id="content" class="container">
 
-
-
-  
-
-  <!-- Centered navigation bar; Greek items shown by default -->
-  <nav class="main-nav" aria-label="Main navigation" id="main-nav">
-    <span class="lang-aware Greek-menu">
-      <a href="#" data-lang="el" onclick="openTab('home-el')">Αρχική</a>
-      <a href="#" data-lang="el" onclick="openTab('about-el')">Σχετικά</a>
-      <a href="#" data-lang="el" onclick="openTab('research-el')">Έρευνα</a>
-      <a href="#" data-lang="el" onclick="openTab('activities-el')">Δράσεις</a>
-      <a href="#" data-lang="el" onclick="openTab('contact-el')">Επικοινωνία</a>
-    </span>
-
-    <span class="lang-aware English-menu" style="display:none;">
-      <a href="#" data-lang="en" onclick="openTab('home-en')">Home</a>
-      <a href="#" data-lang="en" onclick="openTab('about-en')">About</a>
-      <a href="#" data-lang="en" onclick="openTab('research-en')">Research</a>
-      <a href="#" data-lang="en" onclick="openTab('activities-en')">Activities</a>
-      <a href="#" data-lang="en" onclick="openTab('contact-en')">Contact</a>
-    </span>
-  </nav>
-
-  <main id="content" class="container">
-    <!-- Home el (Default) -->
-    <section id="home-el" class="tab active" aria-label="Αρχική Ελληνικά">
-      <div class="hero" style="display:flex; flex-direction:column; align-items:center; text-align:center;">
-        <div>
-          <h1>ΕΛΛΗΝΙΚΟ ΠΑΡΑΤΗΡΗΤΗΡΙΟ ΑΡΓΥΡΟΧΡΥΣΟΧΟΪΑΣ ΚΑΙ ΚΟΣΜΗΜΑΤΟΠΟΙΙΑΣ</h1>
-          <p>Ένας χώρος έρευνας για το ελληνικό κόσμημα που χαρτογραφεί το σύστημα πολιτισμού, οικονομίας και τεχνικής εκπαίδευσης στην αργυροχρυσοχοΐα, σε διάλογο με τις διεθνείς και εγχώριες τάσεις.</p>
-          
-        </div>
-        <img src="photo ergastirio 6.png" alt="Κοσμήματα σε εργαστήριο" style="max-width:600px; height:auto; display:block;"/>
+  <!-- Home el (Default) -->
+  <section id="home-el" class="tab active" aria-label="Αρχική Ελληνικά">
+    <div class="hero">
+      <div>
+        <h1>ΕΛΛΗΝΙΚΟ ΠΑΡΑΤΗΡΗΤΗΡΙΟ ΑΡΓΥΡΟΧΡΥΣΟΧΟΪΑΣ ΚΑΙ ΚΟΣΜΗΜΑΤΟΠΟΙΙΑΣ</h1>
+        <p>Ένας χώρος έρευνας για το ελληνικό κόσμημα που χαρτογραφεί το σύστημα πολιτισμού, οικονομίας και τεχνικής εκπαίδευσης στην αργυροχρυσοχοΐα, σε διάλογο με τις διεθνείς και εγχώριες τάσεις.</p>
       </div>
-    </section>
+      <img src="photo ergastirio 6.png" alt="Κοσμήματα σε εργαστήριο">
+    </div>
+  </section>
 
-    <!-- About el -->
-    <section id="about-el" class="tab" aria-label="Σχετικά Ελληνικά" style="display:none; text-align:center;">
-      <h2>Τι είναι το Παρατηρητήριο</h2>
-      <p>Το Ελληνικό Παρατηρητήριο Αργυροχρυσοχοΐας και Κοσμηματοποιίας (ΕΛΠΑΚ) αποτελεί μια ανεξάρτητη πρωτοβουλία που χαρτογραφεί τον σύγχρονο κόσμο του ελληνικού κοσμήματος. Παρατηρούμε και καταγράφουμε τάσεις, δομές και προοπτικές της αργυροχρυσοχοΐας - κοσμηματοποιίας από την ιστορική της διαδρομή, το εξαγωγικό αποτύπωμα και τη σχέση της με τον τουρισμό, μέχρι τις αλλαγές στην εκπαίδευση, τις νέες τεχνολογίες και τους τρόπους με τους οποίους τα κοσμήματα σχεδιάζονται, παράγονται και προωθούνται σήμερα.</p>
-
-      <h2>Σκοπός</h2>
-      <p>Σκοπός μας είναι να αναδεικνύουμε όσα ήδη συμβαίνουν στον χώρο και να τα συνδέουμε με τις ευρύτερες διεθνείς εξελίξεις. Συνδυάζοντας την οικονομική οπτική και ανάλυση με την εμπειρία μέσα στο εργαστήριο της αργυροχρυσοχοΐας, προσεγγίζουμε τον κλάδο ως ερευνήτριες ενός ζωντανού αλλά συχνά λιγότερο προβεβλημένου οικοσυστήματος, προσφέροντας τεκμηριωμένη γνώση, ανάλυση και κριτικό βλέμμα σε όσους στηρίζουν και διαμορφώνουν το ελληνικό κόσμημα.</p>
-
-      <h2>Ερευνητική Ομάδα</h2>
-
-      <div class="member">
-           <img src="irene.png" alt="Ειρήνη Νομικού-Λαζάρου">
-           <div>
-               <h3>Ειρήνη Νομικού-Λαζάρου – Ερευνήτρια και Συντονίστρια Έρευνας</h3>
-               <p>Είναι πτυχιούχος Οικονομικής και Περιφερειακής Ανάπτυξης από το Πάντειο Πανεπιστήμιο, με δύο μεταπτυχιακούς τίτλους: στην Οικονομική Θεωρία (Οικονομικό Πανεπιστήμιο Αθηνών) και στην Επιστήμη των Δεδομένων (Αμερικανικό Κολλέγιο Ελλάδος). Fulbright Research Scholar στο Columbia University, USA (National Center for Disaster Preparedness – Climate School, 2024–2025). Σήμερα είναι Υποψήφια Διδάκτορας στο Τμήμα Οικονομικής Επιστήμης του ΟΠΑ, όπου ερευνά τον κλιματικό κίνδυνο και τα καταστροφικά φυσικά φαινόμενα, με έμφαση στις επιπτώσεις τους στον ασφαλιστικό και χρηματοπιστωτικό τομέα. Από το 2022 εργάζεται ως ερευνήτρια στο Ίδρυμα Οικονομικών και Βιομηχανικών Ερευνών (ΙΟΒΕ) σε κλαδικές μελέτες σχετικά με την πράσινη μετάβαση και την επιχειρηματικότητα, την περιβαλλοντική βιωσιμότητα, την περιφερειακή ανάπτυξη, τον κλιματικό κίνδυνο στο χρηματοπιστωτικό σύστημα και τη στεγαστική πολιτική. Απέκτησε πτυχίο αργυροχρυσοχοΐας από τη Δημόσια Επαγγελματική Σχολή Αργυροχρυσοχοΐας στην Αθήνα (2012–2014), μία σχολή με μακρά ιστορία στον χώρο, και έχει πρακτική εμπειρία μέσα από τη συνεργασία της με εργαστήρια κοσμηματοτεχνίας, καθώς και τη συμμετοχή της σε ομαδικές και ατομικές εκθέσεις.</p>
-           </div>
+  <!-- About el -->
+  <section id="about-el" class="tab" aria-label="Σχετικά Ελληνικά" style="text-align:center;">
+    <h2>Τι είναι το Παρατηρητήριο</h2>
+    <p>Το Ελληνικό Παρατηρητήριο Αργυροχρυσοχοΐας και Κοσμηματοποιίας (ΕΛΠΑΚ) αποτελεί μια ανεξάρτητη πρωτοβουλία που χαρτογραφεί τον σύγχρονο κόσμο του ελληνικού κοσμήματος. Παρατηρούμε και καταγράφουμε τάσεις, δομές και προοπτικές της αργυροχρυσοχοΐας - κοσμηματοποιίας από την ιστορική της διαδρομή, το εξαγωγικό αποτύπωμα και τη σχέση της με τον τουρισμό, μέχρι τις αλλαγές στην εκπαίδευση, τις νέες τεχνολογίες και τους τρόπους με τους οποίους τα κοσμήματα σχεδιάζονται, παράγονται και προωθούνται σήμερα.</p>
+    <h2>Σκοπός</h2>
+    <p>Σκοπός μας είναι να αναδεικνύουμε όσα ήδη συμβαίνουν στον χώρο και να τα συνδέουμε με τις ευρύτερες διεθνείς εξελίξεις. Συνδυάζοντας την οικονομική οπτική και ανάλυση με την εμπειρία μέσα στο εργαστήριο της αργυροχρυσοχοΐας, προσεγγίζουμε τον κλάδο ως ερευνήτριες ενός ζωντανού αλλά συχνά λιγότερο προβεβλημένου οικοσυστήματος, προσφέροντας τεκμηριωμένη γνώση, ανάλυση και κριτικό βλέμμα σε όσους στηρίζουν και διαμορφώνουν το ελληνικό κόσμημα.</p>
+    <h2>Ερευνητική Ομάδα</h2>
+    <div class="member">
+      <img src="irene.png" alt="Ειρήνη Νομικού-Λαζάρου">
+      <div>
+        <h3>Ειρήνη Νομικού-Λαζάρου – Ερευνήτρια και Συντονίστρια Έρευνας</h3>
+        <p>Είναι πτυχιούχος Οικονομικής και Περιφερειακής Ανάπτυξης από το Πάντειο Πανεπιστήμιο, με δύο μεταπτυχιακούς τίτλους: στην Οικονομική Θεωρία (Οικονομικό Πανεπιστήμιο Αθηνών) και στην Επιστήμη των Δεδομένων (Αμερικανικό Κολλέγιο Ελλάδος). Fulbright Research Scholar στο Columbia University, USA (National Center for Disaster Preparedness – Climate School, 2024–2025). Σήμερα είναι Υποψήφια Διδάκτορας στο Τμήμα Οικονομικής Επιστήμης του ΟΠΑ, όπου ερευνά τον κλιματικό κίνδυνο και τα καταστροφικά φυσικά φαινόμενα, με έμφαση στις επιπτώσεις τους στον ασφαλιστικό και χρηματοπιστωτικό τομέα. Από το 2022 εργάζεται ως ερευνήτρια στο Ίδρυμα Οικονομικών και Βιομηχανικών Ερευνών (ΙΟΒΕ) σε κλαδικές μελέτες σχετικά με την πράσινη μετάβαση και την επιχειρηματικότητα, την περιβαλλοντική βιωσιμότητα, την περιφερειακή ανάπτυξη, τον κλιματικό κίνδυνο στο χρηματοπιστωτικό σύστημα και τη στεγαστική πολιτική. Απέκτησε πτυχίο αργυροχρυσοχοΐας από τη Δημόσια Επαγγελματική Σχολή Αργυροχρυσοχοΐας στην Αθήνα (2012–2014), μία σχολή με μακρά ιστορία στον χώρο, και έχει πρακτική εμπειρία μέσα από τη συνεργασία της με εργαστήρια κοσμηματοτεχνίας, καθώς και τη συμμετοχή της σε ομαδικές και ατομικές εκθέσεις.</p>
       </div>
-      
-      <div class="member">
-           <img src="depi.png" alt="Δέσποινα Βλαστού">
-           <div>
-            <h3>Δέσποινα Βλαστού – Ερευνήτρια, Καλλιτεχνική Διεύθυνση & Γραφιστική Επιμέλεια</h3>
-            <p>Eίναι Αρχιτέκτων Εσωτερικού Χώρου, πτυχιούχος του ΑΚΤΟ και του Middlesex University του Λονδίνου, με μεταπτυχιακό τίτλο MA in Design (2006), με έμφαση στους χώρους εμπειρίας και αναψυχής. Με πολυετή επαγγελματική εμπειρία σε αρχιτεκτονικά γραφεία, κατασκευαστικές εταιρίες, καθώς και στο δικό της αρχιτεκτονικό γραφείο και επιχείρηση, την οποία διατηρεί έως και σήμερα, στράφηκε στον χώρο του κοσμήματος. Είναι άριστη πτυχιούχος της Δημόσιας Επαγγελματικής Σχολής Αργυροχρυσοχοΐας στην Αθήνα (2012–2014) και έχει συμμετάσχει σε ομαδικές και ατομικές εκθέσεις. Σήμερα ως 3D Jewelry Designer, εστιάζει με πάθος την ελεύθερη επαγγελματική της δραστηριότητα στον ψηφιακό σχεδιασμό μοντέλων, την παραγωγή και την κατασκευή κοσμημάτων και fashion accessories, καθώς και στη μελέτη και αξιοποίηση σύγχρονων ψηφιακών εργαλείων σχεδιασμού και παραγωγής, με έμφαση στις τεχνολογίες 3D Printing. Παράλληλα, δημιουργεί και επιμελείται εκπαιδευτικό περιεχόμενο μέσα από το προσωπικό της κανάλι στο YouTube, εστιάζοντας στη διαδικασία ψηφιακού σχεδιασμού κοσμημάτων και στη μετάδοση πρακτικής γνώσης. Το έργο και το ερευνητικό της ενδιαφέρον εστιάζουν στις μεταβολές του σύγχρονου κόσμου του κοσμήματος, στις νέες τεχνολογίες, στις αλλαγές στην εκπαίδευση και στον τρόπο με τον οποίο το κόσμημα επαναπροσδιορίζεται ως προς τον σχεδιασμό, την παραγωγή και την ένταξή του στο πολιτιστικό και οικονομικό περιβάλλον.</p>
-           </div>
+    </div>
+    <div class="member">
+      <img src="depi.png" alt="Δέσποινα Βλαστού">
+      <div>
+        <h3>Δέσποινα Βλαστού – Ερευνήτρια, Καλλιτεχνική Διεύθυνση & Γραφιστική Επιμέλεια</h3>
+        <p>Eίναι Αρχιτέκτων Εσωτερικού Χώρου, πτυχιούχος του ΑΚΤΟ και του Middlesex University του Λονδίνου, με μεταπτυχιακό τίτλο MA in Design (2006), με έμφαση στους χώρους εμπειρίας και αναψυχής. Με πολυετή επαγγελματική εμπειρία σε αρχιτεκτονικά γραφεία, κατασκευαστικές εταιρίες, καθώς και στο δικό της αρχιτεκτονικό γραφείο και επιχείρηση, την οποία διατηρεί έως και σήμερα, στράφηκε στον χώρο του κοσμήματος. Είναι άριστη πτυχιούχος της Δημόσιας Επαγγελματικής Σχολής Αργυροχρυσοχοΐας στην Αθήνα (2012–2014) και έχει συμμετάσχει σε ομαδικές και ατομικές εκθέσεις. Σήμερα ως 3D Jewelry Designer, εστιάζει με πάθος την ελεύθερη επαγγελματική της δραστηριότητα στον ψηφιακό σχεδιασμό μοντέλων, την παραγωγή και την κατασκευή κοσμημάτων και fashion accessories, καθώς και στη μελέτη και αξιοποίηση σύγχρονων ψηφιακών εργαλείων σχεδιασμού και παραγωγής, με έμφαση στις τεχνολογίες 3D Printing. Παράλληλα, δημιουργεί και επιμελείται εκπαιδευτικό περιεχόμενο μέσα από το προσωπικό της κανάλι στο YouTube, εστιάζοντας στη διαδικασία ψηφιακού σχεδιασμού κοσμημάτων και στη μετάδοση πρακτικής γνώσης. Το έργο και το ερευνητικό της ενδιαφέρον εστιάζουν στις μεταβολές του σύγχρονου κόσμου του κοσμήματος, στις νέες τεχνολογίες, στις αλλαγές στην εκπαίδευση και στον τρόπο με τον οποίο το κόσμημα επαναπροσδιορίζεται ως προς τον σχεδιασμό, την παραγωγή και την ένταξή του στο πολιτιστικό και οικονομικό περιβάλλον.</p>
       </div>
-
-      <div class="member">
-           <img src="gioka.png" alt="Μαρία Γκιόκα">
-           <div>
-           <h3>Μαρία Γκιόκα – Ερευνήτρια Αγοράς Κοσμήματος</h3>
-           <p>Είναι πτυχιούχος Οικονομικής Επιστήμης από το Οικονομικό Πανεπιστήμιο Αθηνών και κάτοχος δύο μεταπτυχιακών τίτλων στην Εφαρμοσμένη Οικονομική και Χρηματοοικονομική και στην Οικονομική Θεωρία (ΟΠΑ). Σήμερα είναι Υποψήφια Διδάκτορας στο Τμήμα Οικονομικής Επιστήμης του ΟΠΑ, όπου το ερευνητικό της έργο εστιάζει στη μακροχρόνια σχέση του δημοσίου χρέους επιλεγμένων χωρών με μακροοικονομικές μεταβλητές που επηρεάζουν τη δυναμική του. Έχει εργαστεί ως junior ερευνήτρια στο ΕΛΙΑΜΕΠ (2014–2015), ως διοικητική υπάλληλος στην εταιρεία APOLLO (2015–2017) και ως ερευνήτρια στην Τράπεζα της Ελλάδος (2019–2020). Κατά τη διάρκεια των διδακτορικών της σπουδών έχει διδάξει προπτυχιακά και μεταπτυχιακά μαθήματα, εμπειρία που συνέβαλε καθοριστικά στην ικανότητά της να δομεί και να παρουσιάζει με σαφήνεια σύνθετα θεωρητικά και τεχνικά ζητήματα, καθώς και να αναδεικνύει τις συνδέσεις τους με τις δημιουργικές πρακτικές, την αγορά και τη διαδικασία παραγωγής αξίας. Παράλληλα με την ακαδημαϊκή της πορεία, μεγάλωσε στο Ναύπλιο, σε ένα περιβάλλον άμεσα συνδεδεμένο με το κόσμημα. Από νεαρή ηλικία απέκτησε ουσιαστική εμπειρία μέσα από την πολυετή λειτουργία οικογενειακού καταστήματος κοσμημάτων σε μία από τις πιο έντονες τουριστικά αγορές της Ελλάδας. Η καθημερινή της τριβή με την πώληση, την προώθηση και την επαφή με ένα ευρύ ελληνικό και διεθνές αγοραστικό κοινό της προσέφερε βαθιά γνώση των τάσεων και της εμπορικής δυναμικής του κοσμήματος, καθώς και μια σφαιρική ματιά στη γέφυρα συνεργασίας μεταξύ κοσμηματοτεχνίτη και πωλητή — από τον σχεδιασμό και την παραγωγή έως την παρουσίαση, την αφήγηση και την τελική επιλογή του κοσμήματος από τον αγοραστή.</p>
-           </div>
-     </div>
-    </section>
-
-    <!-- Research el -->
-    <section id="research-el" class="tab" aria-label="Έρευνα Ελληνικά" style="display:none; text-align:center;">
-         <h2>Μελέτη 2027</h2>
-         <p> Σύντομη Περιγραφή - link (αναμένεται ανακοίνωση)</p>     
-    </section> 
-
-    <!-- Δράσεις -->
-    <section id="activities-el" class="tab" aria-label="Δράσεις Ελληνικά" style="display:none; text-align:center;">
-         <h2>Συνεντευξεις</h2>
-         <p> Σύντομη Περιγραφή - (αναμένεται ανακοίνωση)</p>     
-    </section>
-    
-    <!-- Επικοινωνία -->
-    <section id="contact-el" class="tab" aria-label="Επικοινωνία Ελληνικά" style="display:none; text-align:center;">
-         <h2>Email</h2>
-         <p> info@hellenic-goldsmithing-observatory.eu</p>
-
-         <h2>Social Media</h2>
-         <p>
-          <a href="https://www.linkedin.com/company/hellenic-goldsmithing-observatory/" target="_blank" rel="noopener noreferrer">
-          </a>
-         </p>
-                       
-    </section>
-
-    <!-- Home en -->
-    <section id="home-en" class="tab" aria-label="Home English" style="display:none; text-align:center;">
-      <div class="hero" style="display:flex; flex-direction:column; align-items:center; text-align:center;">
-        <div>
-          <h1>HELLENIC GOLDSMITHING OBSERVATORY</h1>
-          <p>A research space dedicated to Greek jewelry that maps the interconnected system of culture, the economy, and technical education in silversmithing and goldsmithing, in dialogue with international and local trends.</p>
-          
-        </div>
-        <img src="photo ergastirio 6.png" alt="photo ergastirio" style="max-width:600px; height:auto; display:block;"/>
-     </div>
-    </section>
-
-    <!-- About en -->
-    <section id="about-en" class="tab" aria-label="About English" style="display:none; text-align:center;">
-      <h2>What is the Observatory</h2>
-      <p>Hellenic Goldsmithing Observatory (HelGO) is an independent initiative that maps the contemporary landscape of Greek jewelry. We observe and document trends, structures, and long‑term dynamics in goldsmithing: from its historical trajectory, export footprint, and relationship with tourism, to shifts in education, the adoption of new technologies, and the evolving ways in which jewelry is designed, produced, and communicated today.</p>
-
-      <h2>Our mission</h2>
-      <p>Our mission is to bring to light what is already unfolding in the field and to place it in the context of broader international dynamics. Combining economic analysis with first-hand experience as practicing goldsmiths, we approach the sector as researchers of a vibrant yet often under‑represented ecosystem, providing evidence‑based insights, structured knowledge, and a critical perspective to those who support and shape Greek jewelry.</p>
-
-      <h2>Who we are</h2>
-
-      <div class="member">
-           <img src="irene.png" alt="Irene Nomikou-Lazarou">
-           <div>
-               <h3>Irene Nomikou-Lazarou - Researcher and Research Coordinator</h3>
-               <p>She holds a degree in Economic and Regional Development from Panteion University, as well as two Master’s degrees: in Economic Theory (Athens University of Economics and Business) and in Data Science (The American College of Greece). She is a Fulbright Research Scholar at Columbia University, USA (National Center for Disaster Preparedness – Climate School, 2024–2025). She is currently a PhD Candidate at the Department of Economics of the Athens University of Economics and Business, where her research focuses on climate risk and catastrophic natural events, with an emphasis on their impacts on the insurance and financial sectors. Since 2022, she has been working as a researcher at the Foundation for Economic and Industrial Research (IOBE) on sectoral studies related to the green transition and entrepreneurship, environmental sustainability, regional development, climate risk in the financial system, and housing policy. She holds a diploma in goldsmithing and jewelry making from the Public Vocational School of Goldsmithing in Athens (2012–2014), an institution with a long-standing tradition in the field. She has gained practical experience through collaborations with jewelry workshops, as well as participation in group and solo exhibitions.</p>
-           </div>
+    </div>
+    <div class="member">
+      <img src="gioka.png" alt="Μαρία Γκιόκα">
+      <div>
+        <h3>Μαρία Γκιόκα – Ερευνήτρια Αγοράς Κοσμήματος</h3>
+        <p>Είναι πτυχιούχος Οικονομικής Επιστήμης από το Οικονομικό Πανεπιστήμιο Αθηνών και κάτοχος δύο μεταπτυχιακών τίτλων στην Εφαρμοσμένη Οικονομική και Χρηματοοικονομική και στην Οικονομική Θεωρία (ΟΠΑ). Σήμερα είναι Υποψήφια Διδάκτορας στο Τμήμα Οικονομικής Επιστήμης του ΟΠΑ, όπου το ερευνητικό της έργο εστιάζει στη μακροχρόνια σχέση του δημοσίου χρέους επιλεγμένων χωρών με μακροοικονομικές μεταβλητές που επηρεάζουν τη δυναμική του. Έχει εργαστεί ως junior ερευνήτρια στο ΕΛΙΑΜΕΠ (2014–2015), ως διοικητική υπάλληλος στην εταιρεία APOLLO (2015–2017) και ως ερευνήτρια στην Τράπεζα της Ελλάδος (2019–2020). Κατά τη διάρκεια των διδακτορικών της σπουδών έχει διδάξει προπτυχιακά και μεταπτυχιακά μαθήματα, εμπειρία που συνέβαλε καθοριστικά στην ικανότητά της να δομεί και να παρουσιάζει με σαφήνεια σύνθετα θεωρητικά και τεχνικά ζητήματα, καθώς και να αναδεικνύει τις συνδέσεις τους με τις δημιουργικές πρακτικές, την αγορά και τη διαδικασία παραγωγής αξίας. Παράλληλα με την ακαδημαϊκή της πορεία, μεγάλωσε στο Ναύπλιο, σε ένα περιβάλλον άμεσα συνδεδεμένο με το κόσμημα. Από νεαρή ηλικία απέκτησε ουσιαστική εμπειρία μέσα από την πολυετή λειτουργία οικογενειακού καταστήματος κοσμημάτων σε μία από τις πιο έντονες τουριστικά αγορές της Ελλάδας. Η καθημερινή της τριβή με την πώληση, την προώθηση και την επαφή με ένα ευρύ ελληνικό και διεθνές αγοραστικό κοινό της προσέφερε βαθιά γνώση των τάσεων και της εμπορικής δυναμικής του κοσμήματος, καθώς και μια σφαιρική ματιά στη γέφυρα συνεργασίας μεταξύ κοσμηματοτεχνίτη και πωλητή — από τον σχεδιασμό και την παραγωγή έως την παρουσίαση, την αφήγηση και την τελική επιλογή του κοσμήματος από τον αγοραστή.</p>
       </div>
+    </div>
+  </section>
 
-      <div class="member">
-           <img src="depi.png" alt="Despina Vlastu">
-           <div>  
-              <h3>Despina Vlastu – Researcher, Art Direction & Graphic Design</h3>
-              <p>She is an Interior Designer, a graduate of AKTO and Middlesex University of London, holding an MA in Design (2006) with a focus on experience and leisure spaces. With extensive professional experience in architectural studios, construction companies, as well as through her own architectural practice and business, which she continues to run today, she shifted her focus to the field of jewelry. She is a graduate with distinction of the Public Vocational School of Silversmithing and Goldsmithing in Athens (2012–2014) and has participated in both group and solo exhibitions. Today, as a 3D Jewelry Designer, she passionately focuses her freelance professional practice on digital model design, the production and fabrication of jewelry and fashion accessories, as well as on the study and application of contemporary digital design and manufacturing tools, with particular emphasis on 3D printing technologies. In parallel, she creates and curates educational content through her personal YouTube channel, focusing on the digital jewelry design process and the dissemination of practical, practice-based knowledge. Her work and research interests focus on the transformations of the contemporary jewelry landscape, emerging technologies, shifts in education, and how jewelry is being redefined in terms of design, production, and its integration into today’s cultural and economic environment.</p>
-           </div>
+  <!-- Research el -->
+  <section id="research-el" class="tab" aria-label="Έρευνα Ελληνικά" style="text-align:center;">
+    <h2>Μελέτη 2027</h2>
+    <p>Σύντομη Περιγραφή - link (αναμένεται ανακοίνωση)</p>
+  </section>
+
+  <!-- Δράσεις -->
+  <section id="activities-el" class="tab" aria-label="Δράσεις Ελληνικά" style="text-align:center;">
+    <h2>Συνεντευξεις</h2>
+    <p>Σύντομη Περιγραφή - (αναμένεται ανακοίνωση)</p>
+  </section>
+
+  <!-- Επικοινωνία -->
+  <section id="contact-el" class="tab" aria-label="Επικοινωνία Ελληνικά" style="text-align:center;">
+    <h2>Email</h2>
+    <p>info@hellenic-goldsmithing-observatory.eu</p>
+    <h2>Social Media</h2>
+    <p>
+      <a href="https://www.linkedin.com/company/hellenic-goldsmithing-observatory/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </p>
+  </section>
+
+  <!-- Home en -->
+  <section id="home-en" class="tab" aria-label="Home English" style="text-align:center;">
+    <div class="hero">
+      <div>
+        <h1>HELLENIC GOLDSMITHING OBSERVATORY</h1>
+        <p>A research space dedicated to Greek jewelry that maps the interconnected system of culture, the economy, and technical education in silversmithing and goldsmithing, in dialogue with international and local trends.</p>
       </div>
+      <img src="photo ergastirio 6.png" alt="photo ergastirio">
+    </div>
+  </section>
 
-      <div class="member">
-           <img src="gioka.png" alt="Maria Gioka">
-           <div>
-              <h3>Maria Gioka – Researcher, Jewelry Market </h3>
-              <p>Maria Gioka holds a degree in Economics from Athens University of Economics and Business (AUEB) and two postgraduate qualifications in Applied Economics and Financial Economics, and in Economic Theory (AUEB). She is currently a PhD candidate in the Department of Economic Science at AUEB, where her research focuses on the long-run relationship between public debt in selected countries and macroeconomic variables that influence its dynamics. Her professional background includes roles as a junior researcher at Hellenic Foundation for European & Foreign Policy (ELIAMEP) (2014–2015), administrative staff at APOLLO (2015–2017) and as a researcher at the Bank of Greece (2019–2020). During her doctoral studies, her teaching portfolio includes undergraduate and graduate courses. This experience has been instrumental in her ability to structure and clearly present complex theoretical and technical issues, and to highlight their links with creative practices, markets, and the process of value creation. Alongside her academic path, she grew up in Nafplio, in an environment closely connected to jewelry. From a young age, she gained substantive experience through the family jewelry business, in one of Greece’s busiest tourist markets. Her daily engagement with selling, promoting, and engaging with a broad Greek and international audience has given her deep insight into jewelry trends and the commercial dynamics of the industry, as well as a holistic view of the bridge between craftsmanship and commerce — from design and production to presentation, storytelling, and the buyer’s final selection of the piece.</p>
-           </div>
+  <!-- About en -->
+  <section id="about-en" class="tab" aria-label="About English" style="text-align:center;">
+    <h2>What is the Observatory</h2>
+    <p>Hellenic Goldsmithing Observatory (HelGO) is an independent initiative that maps the contemporary landscape of Greek jewelry. We observe and document trends, structures, and long‑term dynamics in goldsmithing: from its historical trajectory, export footprint, and relationship with tourism, to shifts in education, the adoption of new technologies, and the evolving ways in which jewelry is designed, produced, and communicated today.</p>
+    <h2>Our mission</h2>
+    <p>Our mission is to bring to light what is already unfolding in the field and to place it in the context of broader international dynamics. Combining economic analysis with first-hand experience as practicing goldsmiths, we approach the sector as researchers of a vibrant yet often under‑represented ecosystem, providing evidence‑based insights, structured knowledge, and a critical perspective to those who support and shape Greek jewelry.</p>
+    <h2>Who we are</h2>
+    <div class="member">
+      <img src="irene.png" alt="Irene Nomikou-Lazarou">
+      <div>
+        <h3>Irene Nomikou-Lazarou - Researcher and Research Coordinator</h3>
+        <p>She holds a degree in Economic and Regional Development from Panteion University, as well as two Master's degrees: in Economic Theory (Athens University of Economics and Business) and in Data Science (The American College of Greece). She is a Fulbright Research Scholar at Columbia University, USA (National Center for Disaster Preparedness – Climate School, 2024–2025). She is currently a PhD Candidate at the Department of Economics of the Athens University of Economics and Business, where her research focuses on climate risk and catastrophic natural events, with an emphasis on their impacts on the insurance and financial sectors. Since 2022, she has been working as a researcher at the Foundation for Economic and Industrial Research (IOBE) on sectoral studies related to the green transition and entrepreneurship, environmental sustainability, regional development, climate risk in the financial system, and housing policy. She holds a diploma in goldsmithing and jewelry making from the Public Vocational School of Goldsmithing in Athens (2012–2014), an institution with a long-standing tradition in the field. She has gained practical experience through collaborations with jewelry workshops, as well as participation in group and solo exhibitions.</p>
       </div>
-    </section>
-        
-    <!-- Research en -->
-    <section id="research-en" class="tab" aria-label="Research English" style="display:none; text-align:center;">
-         <h2>Study 2027</h2>
-         <p> Short Description - link (to be announced)</p>     
-    </section> 
+    </div>
+    <div class="member">
+      <img src="depi.png" alt="Despina Vlastu">
+      <div>
+        <h3>Despina Vlastu – Researcher, Art Direction & Graphic Design</h3>
+        <p>She is an Interior Designer, a graduate of AKTO and Middlesex University of London, holding an MA in Design (2006) with a focus on experience and leisure spaces. With extensive professional experience in architectural studios, construction companies, as well as through her own architectural practice and business, which she continues to run today, she shifted her focus to the field of jewelry. She is a graduate with distinction of the Public Vocational School of Silversmithing and Goldsmithing in Athens (2012–2014) and has participated in both group and solo exhibitions. Today, as a 3D Jewelry Designer, she passionately focuses her freelance professional practice on digital model design, the production and fabrication of jewelry and fashion accessories, as well as on the study and application of contemporary digital design and manufacturing tools, with particular emphasis on 3D printing technologies. In parallel, she creates and curates educational content through her personal YouTube channel, focusing on the digital jewelry design process and the dissemination of practical, practice-based knowledge. Her work and research interests focus on the transformations of the contemporary jewelry landscape, emerging technologies, shifts in education, and how jewelry is being redefined in terms of design, production, and its integration into today's cultural and economic environment.</p>
+      </div>
+    </div>
+    <div class="member">
+      <img src="gioka.png" alt="Maria Gioka">
+      <div>
+        <h3>Maria Gioka – Researcher, Jewelry Market</h3>
+        <p>Maria Gioka holds a degree in Economics from Athens University of Economics and Business (AUEB) and two postgraduate qualifications in Applied Economics and Financial Economics, and in Economic Theory (AUEB). She is currently a PhD candidate in the Department of Economic Science at AUEB, where her research focuses on the long-run relationship between public debt in selected countries and macroeconomic variables that influence its dynamics. Her professional background includes roles as a junior researcher at Hellenic Foundation for European & Foreign Policy (ELIAMEP) (2014–2015), administrative staff at APOLLO (2015–2017) and as a researcher at the Bank of Greece (2019–2020). During her doctoral studies, her teaching portfolio includes undergraduate and graduate courses. This experience has been instrumental in her ability to structure and clearly present complex theoretical and technical issues, and to highlight their links with creative practices, markets, and the process of value creation. Alongside her academic path, she grew up in Nafplio, in an environment closely connected to jewelry. From a young age, she gained substantive experience through the family jewelry business, in one of Greece's busiest tourist markets. Her daily engagement with selling, promoting, and engaging with a broad Greek and international audience has given her deep insight into jewelry trends and the commercial dynamics of the industry, as well as a holistic view of the bridge between craftsmanship and commerce — from design and production to presentation, storytelling, and the buyer's final selection of the piece.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Activities en-->
-    <section id="activities-en" class="tab" aria-label="Activities English" style="display:none; text-align:center;">
-         <h2>Interviews</h2>
-         <p> Short Description - (to be announced)</p>     
-    </section>
+  <!-- Research en -->
+  <section id="research-en" class="tab" aria-label="Research English" style="text-align:center;">
+    <h2>Study 2027</h2>
+    <p>Short Description - link (to be announced)</p>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact-en" class="tab" aria-label="Contact English" style="display:none; text-align:center;">
-         <h2>Email</h2>
-         <p> info@hellenic-goldsmithing-observatory.eu</p>
+  <!-- Activities en-->
+  <section id="activities-en" class="tab" aria-label="Activities English" style="text-align:center;">
+    <h2>Interviews</h2>
+    <p>Short Description - (to be announced)</p>
+  </section>
 
-         <h2>Social Media</h2>
-         <p>
-          <a href="https://www.linkedin.com/company/hellenic-goldsmithing-observatory/" target="_blank" rel="noopener noreferrer">
-          </a>
-        </p> 
-      
-    </section>
-    
+  <!-- Contact -->
+  <section id="contact-en" class="tab" aria-label="Contact English" style="text-align:center;">
+    <h2>Email</h2>
+    <p>info@hellenic-goldsmithing-observatory.eu</p>
+    <h2>Social Media</h2>
+    <p>
+      <a href="https://www.linkedin.com/company/hellenic-goldsmithing-observatory/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </p>
+  </section>
 
-  </main>
+</main>
 
-  <script>
-      // Optional: keep an openTab(id) helper if you use it elsewhere
-      function openTab(targetId) {
-        document.querySelectorAll('[id$="-el"], [id$="-en"]').forEach(sec => {
-          sec.style.display = 'none';
-        });
-        const el = document.getElementById(targetId);
-        if (el) el.style.display = 'block';
-      }
-    
-      // Enforce a single-language view: Greek (-el) or English (-en)
-      function setLang(lang) {
-        localStorage.setItem('siteLang', lang);
-    
-        const greekNav = document.querySelectorAll('.Greek-menu');
-        const englishNav = document.querySelectorAll('.English-menu');
-    
-        if (lang === 'el') {
-          greekNav.forEach(n => n.style.display = 'inline-block');
-          englishNav.forEach(n => n.style.display = 'none');
-          // Greek content only
-          document.querySelectorAll('[id^="home-"], [id^="about-"], [id^="research-"], [id^="activities-"], [id^="contact-"]').forEach(sec => {
-            sec.style.display = sec.id.endsWith('-el') ? 'block' : 'none';
-          });
-        } else {
-          // English content only
-          greekNav.forEach(n => n.style.display = 'none');
-          englishNav.forEach(n => n.style.display = 'inline-block');
-          document.querySelectorAll('[id^="home-"], [id^="about-"], [id^="research-"], [id^="activities-"], [id^="contact-"]').forEach(sec => {
-            sec.style.display = sec.id.endsWith('-en') ? 'block' : 'none';
-          });
-        }
-      }
-    
-      document.addEventListener('DOMContentLoaded', () => {
-        const saved = localStorage.getItem('siteLang') || 'el';
-        setLang(saved);
-     
-      });
-  </script>
+<script>
+// Optional: keep an openTab(id) helper
+function openTab(targetId) {
+  document.querySelectorAll('[id$="-el"], [id$="-en"]').forEach(sec => {
+    sec.style.display = 'none';
+  });
+  const el = document.getElementById(targetId);
+  if (el) el.style.display = 'block';
+}
+</script>
+
 </body>
 </html>
