@@ -78,7 +78,7 @@
   <!-- Header: logo left, language right -->
   <header class="site-header" aria-label="Site header">
     <div class="site-header__brand" aria-label="Branding">
-      <img class="site-header__logo" src="EPAK.png" alt="HelGO.png">
+      <img id="brand-logo" class="site-header__logo" src="EPAK.png" alt="HelGO.png">
     </div>
 
     <div class="site-header__lang" aria-label="Language switch">
@@ -90,8 +90,8 @@
   <script>
   // java snipet to change logo per language 
     const logos = {
-    el: { src: 'EPAK.png', alt: 'ΕΠΑΚ logo' },
-    en: { src: '"HelGO.png', alt: 'HelGO logo' }
+    el: {src: 'EPAK.png', alt: 'ΕΠΑΚ logo'},
+    en: {src: 'HelGO.png', alt: 'HelGO logo'}
   };
 
   // Optional: keep Greek/English menus in sync
