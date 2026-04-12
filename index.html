@@ -2,7 +2,7 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1",user-scalable=no />
   <title>ΕΛΛΗΝΙΚΟ ΠΑΡΑΤΗΡΗΤΗΡΙΟ ΑΡΓΥΡΟΧΡΥΣΟΧΟΪΑΣ ΚΑΙ ΚΟΣΜΗΜΑΤΟΠΟΙΙΑΣ</title>
   <meta name="description" content="Ένας χώρος έρευνας για το ελληνικό κόσμημα που χαρτογραφεί το σύστημα πολιτισμού, οικονομίας και τεχνικής εκπαίδευσης στην αργυροχρυσοχοΐα, σε διάλογο με τις διεθνείς και εγχώριες τάσεις." />
   
@@ -65,9 +65,9 @@
       cursor: pointer;
     }
 
-    @media (max-width: 100%; height: auto;) {
-      .site-header { padding: 1rem; }
-      .main-nav { flex-wrap: wrap; padding: .5rem 1rem; }
+    @media (max-width: 768px) {
+      body { overflow-x: hidden; }
+      .container { width: 100%; padding: 0 1rem; }
     }
 
     /* Simple page container */
