@@ -411,14 +411,16 @@ function setLang(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Hide all sections except home on load
+  // Hide all sections
   document.querySelectorAll('[id$="-el"], [id$="-en"]').forEach(sec => {
     sec.style.display = 'none';
   });
-  // Show only the home section in the saved language
+  // Get saved language and show ONLY home section
   const saved = localStorage.getItem('siteLang') || 'el';
-  document.getElementById('home-' + saved).style.display = 'block';
-  setLang(saved);
+  const homeId = 'home-' + saved;
+  document.getElementById(homeId).style.display = 'block';
+  // Hide menus (don't call setLang which shows all sections)
+  showHideMenus(saved);
 });
 </script>
 
