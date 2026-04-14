@@ -371,18 +371,18 @@ a:hover {
 <!-- Centered navigation bar; Greek items shown by default -->
 <nav class="main-nav" aria-label="Main navigation" id="main-nav">
   <span class="lang-aware Greek-menu">
-    <a href="#" data-lang="el" onclick="openTab('home-el')">Αρχική</a>
-    <a href="#" data-lang="el" onclick="openTab('about-el')">Σχετικά</a>
-    <a href="#" data-lang="el" onclick="openTab('research-el')">Έρευνα</a>
-    <a href="#" data-lang="el" onclick="openTab('activities-el')">Δράσεις</a>
-    <a href="#" data-lang="el" onclick="openTab('contact-el')">Επικοινωνία</a>
+    <a href="#" data-lang="el" onclick="event.preventDefault(); openTab('home-el')">Αρχική</a>
+    <a href="#" data-lang="el" onclick="event.preventDefault(); openTab('about-el')">Σχετικά</a>
+    <a href="#" data-lang="el" onclick="event.preventDefault(); openTab('research-el')">Έρευνα</a>
+    <a href="#" data-lang="el" onclick="event.preventDefault(); openTab('activities-el')">Δράσεις</a>
+    <a href="#" data-lang="el" onclick="event.preventDefault(); openTab('contact-el')">Επικοινωνία</a>
   </span>
   <span class="lang-aware English-menu" style="display:none;">
-    <a href="#" data-lang="en" onclick="openTab('home-en')">Home</a>
-    <a href="#" data-lang="en" onclick="openTab('about-en')">About</a>
-    <a href="#" data-lang="en" onclick="openTab('research-en')">Research</a>
-    <a href="#" data-lang="en" onclick="openTab('activities-en')">Activities</a>
-    <a href="#" data-lang="en" onclick="openTab('contact-en')">Contact</a>
+    <a href="#" data-lang="en" onclick="event.preventDefault(); openTab('home-en')">Home</a>
+    <a href="#" data-lang="en" onclick="event.preventDefault(); openTab('about-en')">About</a>
+    <a href="#" data-lang="en" onclick="event.preventDefault(); openTab('research-en')">Research</a>
+    <a href="#" data-lang="en" onclick="event.preventDefault(); openTab('activities-en')">Activities</a>
+    <a href="#" data-lang="en" onclick="event.preventDefault(); openTab('contact-en')">Contact</a>
   </span>
 </nav>
 
