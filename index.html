@@ -534,8 +534,9 @@ function showHideMenus(lang) {
 }
 
 function hideAllSections() {
-  document.querySelectorAll('[id$="-el"], [id$="-en"]').forEach(sec => {
+  document.querySelectorAll('.tab').forEach(sec => {
     sec.style.display = 'none';
+    sec.classList.remove('active');
   });
 }
 
@@ -543,7 +544,9 @@ function showSectionById(sectionId) {
   if (!sectionId) return false;
   const el = document.getElementById(sectionId);
   if (!el) return false;
+
   el.style.display = 'block';
+  el.classList.add('active');
   return true;
 }
 
