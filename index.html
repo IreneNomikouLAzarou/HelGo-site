@@ -364,65 +364,7 @@ a:hover {
   </div>
 </header>
 
-<script>
-// Logo swap per language
-const logos = {
-  el: { src: 'EPAK.png', alt: 'ΕΠΑΚ logo' },
-  en: { src: 'HelGO.png', alt: 'HelGO logo' }
-};
 
-function showHideMenus(lang) {
-  const greek = document.querySelector('.Greek-menu');
-  const english = document.querySelector('.English-menu');
-  if (greek && english) {
-    greek.style.display = (lang === 'el') ? 'inline' : 'none';
-    english.style.display = (lang === 'en') ? 'inline' : 'none';
-  }
-}
-
-function setLang(lang) {
-  if (!logos[lang]) return;
-  // Swap logo
-  const logo = document.getElementById('brand-logo');
-  if (logo) {
-    logo.src = logos[lang].src;
-    logo.alt = logos[lang].alt;
-  }
-  // Swap menus and content
-  showHideMenus(lang);
-  
-  // Hide all sections
-  document.querySelectorAll('[id$="-el"], [id$="-en"]').forEach(sec => {
-    sec.style.display = 'none';
-  });
-  
-  // Show only sections in selected language
-  if (lang === 'el') {
-    document.querySelectorAll('[id$="-el"]').forEach(sec => {
-      sec.style.display = 'block';
-    });
-  } else {
-    document.querySelectorAll('[id$="-en"]').forEach(sec => {
-      sec.style.display = 'block';
-    });
-  }
-  
-  localStorage.setItem('siteLang', lang);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Hide all sections
-  document.querySelectorAll('[id$="-el"], [id$="-en"]').forEach(sec => {
-    sec.style.display = 'none';
-  });
-  // Get saved language and show ONLY home section
-  const saved = localStorage.getItem('siteLang') || 'el';
-  const homeId = 'home-' + saved;
-  document.getElementById(homeId).style.display = 'block';
-  // Hide menus (don't call setLang which shows all sections)
-  showHideMenus(saved);
-});
-</script>
 
 <!-- Centered navigation bar; Greek items shown by default -->
 <nav class="main-nav" aria-label="Main navigation" id="main-nav">
@@ -573,14 +515,137 @@ document.addEventListener('DOMContentLoaded', () => {
 </main>
 
 <script>
-// Optional: keep an openTab(id) helper
-function openTab(targetId) {
+/* --- Logo swap per language + tabs/sections fix --- */
+
+const logos = {
+  el: { src: 'EPAK.png', alt: 'ΕΠΑΚ logo' },
+  en: { src: 'HelGO.png', alt: 'HelGO logo' }
+};
+
+function showHideMenus(lang) {
+  const greek = document.querySelector('.Greek-menu');
+  const english = document.querySelector('.English-menu');
+  if (greek && english) {
+    greek.style.display = (lang === 'el') ? 'inline' : 'none';
+    english.style.display = (lang === 'en') ? 'inline' : 'none';
+  }
+}
+
+function hideAllSections() {
   document.querySelectorAll('[id$="-el"], [id$="-en"]').forEach(sec => {
     sec.style.display = 'none';
   });
-  const el = document.getElementById(targetId);
-  if (el) el.style.display = 'block';
 }
+
+function showSectionById(sectionId) {
+  if (!sectionId) return false;
+  const el = document.getElementById(sectionId);
+  if (!el) return false;
+  el.style.display = 'block';
+  return true;
+}
+
+function getCurrentLang() {
+  return localStorage.getItem('siteLang') || 'el';
+}
+
+function getSectionSuffix(lang) {
+  return lang === 'en' ? '-en' : '-el';
+}
+
+function languageSwitchTo(lang) {
+  if (!logos[lang]) return;
+
+  // Swap logo
+  const logo = document.getElementById('brand-logo');
+  if (logo) {
+    logo.src = logos[lang].src;
+    logo.alt = logos[lang].alt;
+  }
+
+  // Swap menus
+  showHideMenus(lang);
+
+  // Hide all sections first
+  hideAllSections();
+
+  // Try to keep the same tab name, but swap suffix (-el/-en)
+  // Example: if active is "about-el" -> show "about-en"
+  const activeId = localStorage.getItem('activeSectionId');
+  const oldSuffix = (activeId && activeId.endsWith('-en')) ? '-en' : '-el';
+  const baseName = activeId ? activeId.replace(oldSuffix, '') : null;
+
+  let nextId = null;
+  if (baseName) {
+    nextId = baseName + getSectionSuffix(lang);
+  }
+
+  // If that section exists, show it; otherwise fallback to home-<lang>
+  if (!showSectionById(nextId)) {
+    const homeId = 'home-' + lang;
+    showSectionById(homeId);
+    nextId = homeId;
+  }
+
+  localStorage.setItem('siteLang', lang);
+  localStorage.setItem('activeSectionId', nextId);
+}
+
+// Keep your old API name (setLang) so existing HTML calls won't break
+function setLang(lang) {
+  languageSwitchTo(lang);
+}
+
+// Required helper: called by tab buttons
+function openTab(targetId) {
+  if (!targetId) return;
+
+  // Hide all sections
+  hideAllSections();
+
+  // Show only requested section
+  const ok = showSectionById(targetId);
+  if (!ok) return;
+
+  // Save state so it won't reset to home on re-init
+  localStorage.setItem('activeSectionId', targetId);
+
+  // Also sync language from section suffix if possible
+  if (targetId.endsWith('-en')) localStorage.setItem('siteLang', 'en');
+  else if (targetId.endsWith('-el')) localStorage.setItem('siteLang', 'el');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const savedLang = getCurrentLang();
+
+  // Ensure menus/logo reflect language on load
+  languageSwitchTo(savedLang);
+
+  // IMPORTANT:
+  // If we already have an activeSectionId saved, show it (no forced home).
+  const savedActive = localStorage.getItem('activeSectionId');
+
+  if (savedActive && typeof savedActive === 'string') {
+    // If savedActive exists, show it (and if language mismatch, it will still show the saved id)
+    // Optionally you can enforce suffix match; here we enforce:
+    const enforcedId = savedActive.endsWith('-en') || savedActive.endsWith('-el')
+      ? savedActive
+      : (savedActive + getSectionSuffix(savedLang));
+
+    if (showSectionById(enforcedId)) {
+      localStorage.setItem('activeSectionId', enforcedId);
+      return;
+    }
+  }
+
+  // Fallback: show home-<lang> only if we don't have a valid saved active section
+  hideAllSections();
+  const homeId = 'home-' + savedLang;
+  showSectionById(homeId);
+  localStorage.setItem('activeSectionId', homeId);
+
+  showHideMenus(savedLang);
+});
 </script>
 
 </body>
