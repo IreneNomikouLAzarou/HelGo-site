@@ -524,7 +524,7 @@ a:hover {
 </main>
 
 <script>
-/* --- Logo swap per language + tabs/sections fix --- */
+/* --- Logo swap per language + tabs/sections fix (no double hide/show) --- */
 
 const logos = {
   el: { src: 'EPAK.png', alt: 'ΕΠΑΚ logo' },
@@ -579,7 +579,6 @@ function languageSwitchTo(lang) {
   hideAllSections();
 
   // Try to keep the same tab name, but swap suffix (-el/-en)
-  // Example: if active is "about-el" -> show "about-en"
   const activeId = localStorage.getItem('activeSectionId');
   const oldSuffix = (activeId && activeId.endsWith('-en')) ? '-en' : '-el';
   const baseName = activeId ? activeId.replace(oldSuffix, '') : null;
@@ -627,33 +626,35 @@ function openTab(targetId) {
 document.addEventListener('DOMContentLoaded', () => {
   const savedLang = getCurrentLang();
 
-  // Ensure menus/logo reflect language on load
-  languageSwitchTo(savedLang);
+  // 1) Update logo + menus ONLY (χωρίς hide/show διπλά)
+  if (logos[savedLang]) {
+    const logo = document.getElementById('brand-logo');
+    if (logo) {
+      logo.src = logos[savedLang].src;
+      logo.alt = logos[savedLang].alt;
+    }
+  }
+  showHideMenus(savedLang);
 
-  // IMPORTANT:
-  // If we already have an activeSectionId saved, show it (no forced home).
+  // 2) Hide all sections exactly once
+  hideAllSections();
+
+  // 3) Show exactly the saved section (or fallback home-<lang>)
   const savedActive = localStorage.getItem('activeSectionId');
 
   if (savedActive && typeof savedActive === 'string') {
-    // If savedActive exists, show it (and if language mismatch, it will still show the saved id)
-    // Optionally you can enforce suffix match; here we enforce:
-    const enforcedId = savedActive.endsWith('-en') || savedActive.endsWith('-el')
-      ? savedActive
-      : (savedActive + getSectionSuffix(savedLang));
-
-    if (showSectionById(enforcedId)) {
-      localStorage.setItem('activeSectionId', enforcedId);
+    // If savedActive doesn't exist (π.χ. παλιό id), fallback
+    if (showSectionById(savedActive)) {
+      // Keep localStorage consistent
+      if (savedActive.endsWith('-en')) localStorage.setItem('siteLang', 'en');
+      if (savedActive.endsWith('-el')) localStorage.setItem('siteLang', 'el');
       return;
     }
   }
 
-  // Fallback: show home-<lang> only if we don't have a valid saved active section
-  hideAllSections();
   const homeId = 'home-' + savedLang;
   showSectionById(homeId);
   localStorage.setItem('activeSectionId', homeId);
-
-  showHideMenus(savedLang);
 });
 </script>
 
