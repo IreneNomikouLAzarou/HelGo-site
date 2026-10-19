@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ΕΛΛΗΝΙΚΟ ΠΑΡΑΤΗΡΗΤΗΡΙΟ ΑΡΓΥΡΟΧΡΥΣΟΧΟΪΑΣ ΚΑΙ ΚΟΣΜΗΜΑΤΟΠΟΙΙΑΣ</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--emerald:#0D7350;--emerald-dark:#08513A;--stone:#F4F4F1;--ink:#1A1A1A;--gold:#B8924A;}
+  body{font-family:'Poppins',sans-serif;color:var(--ink);}
+  .bg-emerald{background:rgba(13,115,80,.16);}
+  .text-emerald{color:var(--emerald);} .text-emerald-dark{color:var(--emerald-dark);}
+  .bg-stone{background:var(--stone);}
+  .gold-line{position:relative;overflow:hidden;height:2px;width:0;background:#000;margin:1.25rem auto 0;transition:width 1.6s cubic-bezier(.34,1.4,.64,1) .2s;}
+  .gold-line.draw{width:420px;max-width:90%;}
+  .gold-line::after{content:'';position:absolute;top:0;left:-30%;width:30%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);opacity:0;}
+  .gold-line.draw::after{animation:sheen 1.2s ease 1.6s 1 forwards;}
+  @keyframes sheen{0%{left:-30%;opacity:1}100%{left:110%;opacity:1}}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+  .reveal.show{opacity:1;transform:none;}
+  .card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;border-top:3px solid transparent;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.08);border-top-color:var(--emerald);}
+  .btn{background:var(--emerald);color:#fff;padding:.7rem 1.4rem;border-radius:4px;display:inline-block;transition:background .3s;cursor:pointer;}
+  .btn:hover{background:var(--emerald-dark);}
+  .btn-outline{border:1px solid #fff;color:#fff;padding:.7rem 1.4rem;border-radius:4px;display:inline-block;transition:all .3s;}
+  .btn-outline:hover{background:#fff;color:var(--emerald-dark);}
+  .tab{position:relative;padding:.25rem 0;cursor:pointer;color:#374151;}
+  .tab::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--emerald);transition:width .3s;}
+  .tab:hover::after{width:100%;}
+  .tab.active{color:var(--emerald-dark);font-weight:600;}
+  .tab.active::after{width:100%;}
+  .lang-btn.active{background:var(--emerald);color:#fff;}
+  .page{display:none;}
+  .page.active{display:block;animation:fadePage .5s ease;}
+  @keyframes fadePage{from{opacity:0}to{opacity:1}}
+  .placeholder{border:2px dashed #9ca3af;display:flex;align-items:center;justify-content:center;color:#6b7280;font-size:.85rem;text-align:center;}
+  .skip{position:absolute;left:-999px;} .skip:focus{left:1rem;top:1rem;background:#fff;padding:.5rem 1rem;z-index:100;}
+  [data-lang]{display:none;}
+  html[lang="el"] [data-lang="el"], html[lang="en"] [data-lang="en"]{display:revert;}
+  .page-head{background:rgba(13,115,80,.16);color:var(--emerald-dark);text-align:center;padding:3.5rem 1.5rem;}
+  .field{display:block;width:100%;margin-top:.4rem;border:1px solid #d1d5db;border-radius:4px;padding:.65rem .8rem;font-size:.9rem;background:#fff;transition:border-color .2s,box-shadow .2s;}
+  .fb-btn{width:2.2rem;height:2.2rem;border:1px solid rgba(8,81,58,.35);border-radius:4px;color:var(--emerald-dark);background:#fff;font-size:1.1rem;line-height:1;transition:background .2s,color .2s;}
+  .fb-btn:hover{background:var(--emerald);color:#fff;}
+  #fbBook{box-shadow:0 10px 30px rgba(8,81,58,.18);}
+  .fb-page{background:#fff;display:flex;align-items:center;justify-content:center;color:#6b7280;font-size:1rem;border:1px solid #e5e7eb;}
+  .fb-page img{width:100%;height:100%;object-fit:contain;}
+  .social{color:var(--emerald-dark);transition:color .2s,transform .2s;}
+  .social:hover{color:var(--emerald);transform:translateY(-2px);}
+  .field:focus{outline:none;border-color:var(--emerald);box-shadow:0 0 0 3px rgba(13,115,80,.15);}
+</style>
+</head>
+<body class="bg-white flex flex-col min-h-screen">
+
+<a href="#main" class="skip"><span data-lang="el">Μετάβαση στο περιεχόμενο</span><span data-lang="en">Skip to main content</span></a>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+    <!-- ΤΟ ΔΙΚΟ ΣΑΣ LOGO, ΑΜΕΤΑΒΛΗΤΟ: ξεχωριστό για GR και EN
+         Στον τελικό κώδικα:
+         <img data-lang="el" src="EPAK.png" alt="ΕΛΠΑΚ">
+         <img data-lang="en" src="HelGO.png" alt="HELGO"> -->
+    <a onclick="showPage('home')" class="placeholder w-56 h-14 rounded cursor-pointer"><span data-lang="el">Logo ΕΛΠΑΚ (ελληνικό)</span><span data-lang="en">Logo HELGO (English)</span></a>
+    <nav class="hidden md:flex gap-7 text-sm font-medium">
+      <a class="tab" data-tab="home" onclick="showPage('home')"><span data-lang="el">Αρχική</span><span data-lang="en">Home</span></a>
+      <a class="tab" data-tab="about" onclick="showPage('about')"><span data-lang="el">Σχετικά</span><span data-lang="en">About</span></a>
+      <a class="tab" data-tab="research" onclick="showPage('research')"><span data-lang="el">Έρευνα</span><span data-lang="en">Research</span></a>
+      <a class="tab" data-tab="activities" onclick="showPage('activities')"><span data-lang="el">Δράσεις</span><span data-lang="en">Activities</span></a>
+      <a class="tab" data-tab="contact" onclick="showPage('contact')"><span data-lang="el">Επικοινωνία</span><span data-lang="en">Contact</span></a>
+    </nav>
+    <div class="flex text-xs font-semibold border border-gray-300 rounded overflow-hidden">
+      <button class="lang-btn px-3 py-1.5" onclick="setLang('el')" id="btn-el">GR</button>
+      <button class="lang-btn px-3 py-1.5" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
+  </div>
+  <!-- mobile tabs -->
+  <nav class="md:hidden flex gap-5 overflow-x-auto px-6 pb-3 text-sm font-medium">
+    <a class="tab whitespace-nowrap" data-tab="home" onclick="showPage('home')"><span data-lang="el">Αρχική</span><span data-lang="en">Home</span></a>
+    <a class="tab whitespace-nowrap" data-tab="about" onclick="showPage('about')"><span data-lang="el">Σχετικά</span><span data-lang="en">About</span></a>
+    <a class="tab whitespace-nowrap" data-tab="research" onclick="showPage('research')"><span data-lang="el">Έρευνα</span><span data-lang="en">Research</span></a>
+    <a class="tab whitespace-nowrap" data-tab="activities" onclick="showPage('activities')"><span data-lang="el">Δράσεις</span><span data-lang="en">Activities</span></a>
+    <a class="tab whitespace-nowrap" data-tab="contact" onclick="showPage('contact')"><span data-lang="el">Επικοινωνία</span><span data-lang="en">Contact</span></a>
+  </nav>
+</header>
+
+<main id="main" class="flex-1">
+
+<!-- ===================== TAB: HOME ===================== -->
+<div id="home" class="page">
+  <section class="bg-emerald px-6 py-16 md:py-20">
+    <div class="max-w-3xl mx-auto bg-white shadow-md px-8 md:px-14 py-12 text-center reveal">
+      <h1 class="text-2xl md:text-3xl font-bold leading-snug">
+        <span data-lang="el">ΕΛΛΗΝΙΚΟ ΠΑΡΑΤΗΡΗΤΗΡΙΟ ΑΡΓΥΡΟΧΡΥΣΟΧΟΪΑΣ ΚΑΙ ΚΟΣΜΗΜΑΤΟΠΟΙΙΑΣ</span>
+        <span data-lang="en">HELLENIC GOLDSMITHING OBSERVATORY</span>
+      </h1>
+      <div class="gold-line" id="goldLine"></div>
+      <p class="mt-6 text-gray-600 leading-relaxed">
+        <span data-lang="el">Ένας χώρος έρευνας για το ελληνικό κόσμημα που χαρτογραφεί το σύστημα πολιτισμού, οικονομίας και τεχνικής εκπαίδευσης στην αργυροχρυσοχοΐα, σε διάλογο με τις διεθνείς και εγχώριες τάσεις.</span>
+        <span data-lang="en">A research space dedicated to Greek jewelry that maps the interconnected system of culture, the economy, and technical education in silversmithing and goldsmithing, in dialogue with international and local trends.</span>
+      </p>
+      <div class="placeholder w-full h-64 mt-8">Εικόνα: άγαλμα με δεδομένα (από την έκδοση)</div>
+      <button onclick="showPage('research')" class="btn mt-8"><span data-lang="el">Δείτε το Infographic 2026</span><span data-lang="en">View the 2026 Infographic</span></button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===================== TAB: ABOUT ===================== -->
+<div id="about" class="page">
+  <div class="page-head">
+    <h1 class="text-3xl font-bold"><span data-lang="el">Σχετικά</span><span data-lang="en">About</span></h1>
+    <div class="gold-line draw"></div>
+  </div>
+  <section class="px-6 py-16">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+      <div class="reveal">
+        <h2 class="text-2xl font-bold text-emerald-dark"><span data-lang="el">Τι είναι το Παρατηρητήριο</span><span data-lang="en">What is the Observatory</span></h2>
+        <p class="mt-4 text-gray-700 leading-relaxed">
+          <span data-lang="el">Το Ελληνικό Παρατηρητήριο Αργυροχρυσοχοΐας και Κοσμηματοποιίας (ΕΛΠΑΚ) αποτελεί μια ανεξάρτητη πρωτοβουλία που χαρτογραφεί τον σύγχρονο κόσμο του ελληνικού κοσμήματος. Παρατηρούμε και καταγράφουμε τάσεις, δομές και προοπτικές της αργυροχρυσοχοΐας - κοσμηματοποιίας από την ιστορική της διαδρομή, τις εξαγωγές και τη σχέση της με τον τουρισμό, μέχρι τις αλλαγές στην εκπαίδευση, τις νέες τεχνολογίες και τους τρόπους με τους οποίους τα κοσμήματα σχεδιάζονται, παράγονται και προωθούνται σήμερα.</span>
+          <span data-lang="en">Hellenic Goldsmithing Observatory (HelGO) is an independent initiative that maps the contemporary landscape of Greek jewelry. We observe and document trends, structures, and long‑term dynamics in goldsmithing: from its historical trajectory, export profile, and relationship with tourism, to shifts in education, the adoption of new technologies, and the evolving ways in which jewelry is designed, produced, and communicated today.</span>
+        </p>
+      </div>
+      <div class="reveal">
+        <h2 class="text-2xl font-bold text-emerald-dark"><span data-lang="el">Σκοπός</span><span data-lang="en">Our mission</span></h2>
+        <p class="mt-4 text-gray-700 leading-relaxed">
+          <span data-lang="el">Σκοπός μας είναι να αναδεικνύουμε όσα ήδη συμβαίνουν στον χώρο και να τα συνδέουμε με τις ευρύτερες διεθνείς εξελίξεις. Συνδυάζοντας την οικονομική οπτική και ανάλυση με την εμπειρία μέσα στο εργαστήριο της αργυροχρυσοχοΐας, προσεγγίζουμε τον κλάδο ως ερευνήτριες ενός ζωντανού αλλά συχνά λιγότερο προβεβλημένου οικοσυστήματος, προσφέροντας τεκμηριωμένη γνώση, ανάλυση και κριτικό βλέμμα σε όσους στηρίζουν και διαμορφώνουν το ελληνικό κόσμημα.</span>
+          <span data-lang="en">Our mission is to bring to light what is already unfolding in the field and to place it in the context of broader international dynamics. Combining economic analysis with first-hand experience as practicing goldsmiths, we approach the sector as researchers of a vibrant yet often under‑represented ecosystem, providing evidence‑based insights, structured knowledge, and a critical perspective to those who support and shape Greek jewelry.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-stone px-6 py-16">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-center text-2xl font-bold text-emerald-dark reveal"><span data-lang="el">ΕΡΕΥΝΗΤΙΚΗ ΟΜΑΔΑ</span><span data-lang="en">RESEARCH TEAM</span></h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-10">
+
+        <div class="card bg-white p-7 reveal bio">
+          <div class="placeholder w-20 h-20 rounded-full">Φωτο</div>
+          <h3 class="mt-4 font-semibold"><span data-lang="el">Ειρήνη Νομικού-Λαζάρου</span><span data-lang="en">Irene Nomikou-Lazarou</span></h3>
+          <p class="text-sm text-emerald"><span data-lang="el">Ερευνήτρια & Συντονίστρια Έρευνας</span><span data-lang="en">Researcher and Research Coordinator</span></p>
+          <p class="mt-3 text-sm text-gray-700 leading-relaxed">
+            <span data-lang="el">Είναι πτυχιούχος Οικονομικής και Περιφερειακής Ανάπτυξης από το Πάντειο Πανεπιστήμιο, με δύο μεταπτυχιακούς τίτλους: στην Οικονομική Θεωρία (Οικονομικό Πανεπιστήμιο Αθηνών) και στην Επιστήμη των Δεδομένων (Αμερικανικό Κολλέγιο Ελλάδος). Fulbright Research Scholar στο Columbia University, USA (National Center for Disaster Preparedness – Climate School, 2024–2025). Σήμερα είναι Υποψήφια Διδάκτορας στο Τμήμα Οικονομικής Επιστήμης του ΟΠΑ, όπου ερευνά τον κλιματικό κίνδυνο και τα καταστροφικά φυσικά φαινόμενα, με έμφαση στις επιπτώσεις τους στον ασφαλιστικό και χρηματοπιστωτικό τομέα. Από το 2022 εργάζεται ως ερευνήτρια στο Ίδρυμα Οικονομικών και Βιομηχανικών Ερευνών (ΙΟΒΕ) σε κλαδικές μελέτες σχετικά με την πράσινη μετάβαση και την επιχειρηματικότητα, την περιβαλλοντική βιωσιμότητα, την περιφερειακή ανάπτυξη, τον κλιματικό κίνδυνο στο χρηματοπιστωτικό σύστημα και τη στεγαστική πολιτική. Απέκτησε πτυχίο αργυροχρυσοχοΐας από τη Δημόσια Επαγγελματική Σχολή Αργυροχρυσοχοΐας στην Αθήνα (2012–2014), μία σχολή με μακρά ιστορία στον χώρο, και έχει πρακτική εμπειρία μέσα από τη συνεργασία της με εργαστήρια κοσμηματοτεχνίας, καθώς και τη συμμετοχή της σε ομαδικές και ατομικές εκθέσεις.</span></span>
+            <span data-lang="en">She holds a degree in Economic and Regional Development from Panteion University, as well as two Master's degrees: in Economic Theory (Athens University of Economics and Business) and in Data Science (The American College of Greece). She is a Fulbright Research Scholar at Columbia University, USA (National Center for Disaster Preparedness – Climate School, 2024–2025). She is currently a PhD Candidate at the Department of Economics of the Athens University of Economics and Business, where her research focuses on climate risk and catastrophic natural events, with an emphasis on their impacts on the insurance and financial sectors. Since 2022, she has been working as a researcher at the Foundation for Economic and Industrial Research (IOBE) on sectoral studies related to the green transition and entrepreneurship, environmental sustainability, regional development, climate risk in the financial system, and housing policy. She holds a diploma in goldsmithing and jewelry making from the Public Vocational School of Goldsmithing in Athens (2012–2014), an institution with a long-standing tradition in the field. She has gained practical experience through collaborations with jewelry workshops, as well as participation in group and solo exhibitions.</span></span>
+          </p>
+        </div>
+
+        <div class="card bg-white p-7 reveal bio">
+          <div class="placeholder w-20 h-20 rounded-full">Φωτο</div>
+          <h3 class="mt-4 font-semibold"><span data-lang="el">Δέσποινα Βλαστού</span><span data-lang="en">Despina Vlastu</span></h3>
+          <p class="text-sm text-emerald"><span data-lang="el">Ερευνήτρια, Art Direction & Graphic Design</span><span data-lang="en">Researcher, Art Direction & Graphic Design</span></p>
+          <p class="mt-3 text-sm text-gray-700 leading-relaxed">
+            <span data-lang="el">Eίναι Αρχιτέκτων Εσωτερικού Χώρου, πτυχιούχος του ΑΚΤΟ και του Middlesex University του Λονδίνου, με μεταπτυχιακό τίτλο MA in Design (2006), με έμφαση στους χώρους εμπειρίας και αναψυχής. Με πολυετή επαγγελματική εμπειρία σε αρχιτεκτονικά γραφεία, κατασκευαστικές εταιρίες, καθώς και στο δικό της αρχιτεκτονικό γραφείο και επιχείρηση, την οποία διατηρεί έως και σήμερα, στράφηκε στον χώρο του κοσμήματος. Είναι άριστη πτυχιούχος της Δημόσιας Επαγγελματικής Σχολής Αργυροχρυσοχοΐας στην Αθήνα (2012–2014) και έχει συμμετάσχει σε ομαδικές και ατομικές εκθέσεις. Σήμερα ως 3D Jewelry Designer, εστιάζει με πάθος την ελεύθερη επαγγελματική της δραστηριότητα στον ψηφιακό σχεδιασμό μοντέλων, την παραγωγή και την κατασκευή κοσμημάτων και fashion accessories, καθώς και στη μελέτη και αξιοποίηση σύγχρονων ψηφιακών εργαλείων σχεδιασμού και παραγωγής, με έμφαση στις τεχνολογίες 3D Printing. Παράλληλα, δημιουργεί και επιμελείται εκπαιδευτικό περιεχόμενο μέσα από το προσωπικό της κανάλι στο YouTube, εστιάζοντας στη διαδικασία ψηφιακού σχεδιασμού κοσμημάτων και στη μετάδοση πρακτικής γνώσης. Το έργο και το ερευνητικό της ενδιαφέρον εστιάζουν στις μεταβολές του σύγχρονου κόσμου του κοσμήματος, στις νέες τεχνολογίες, στις αλλαγές στην εκπαίδευση και στον τρόπο με τον οποίο το κόσμημα επαναπροσδιορίζεται ως προς τον σχεδιασμό, την παραγωγή και την ένταξή του στο πολιτιστικό και οικονομικό περιβάλλον.</span></span>
+            <span data-lang="en">She is an Interior Designer, a graduate of AKTO and Middlesex University of London, holding an MA in Design (2006) with a focus on experience and leisure spaces. With extensive professional experience in architectural studios, construction companies, as well as through her own architectural practice and business, which she continues to run today, she shifted her focus to the field of jewelry. She is a graduate with distinction of the Public Vocational School of Silversmithing and Goldsmithing in Athens (2012–2014) and has participated in both group and solo exhibitions. Today, as a 3D Jewelry Designer, she passionately focuses her freelance professional practice on digital model design, the production and fabrication of jewelry and fashion accessories, as well as on the study and application of contemporary digital design and manufacturing tools, with particular emphasis on 3D printing technologies. In parallel, she creates and curates educational content through her personal YouTube channel, focusing on the digital jewelry design process and the dissemination of practical, practice-based knowledge. Her work and research interests focus on the transformations of the contemporary jewelry landscape, emerging technologies, shifts in education, and how jewelry is being redefined in terms of design, production, and its integration into today's cultural and economic environment.</span></span>
+          </p>
+        </div>
+
+        <div class="card bg-white p-7 reveal bio">
+          <div class="placeholder w-20 h-20 rounded-full">Φωτο</div>
+          <h3 class="mt-4 font-semibold"><span data-lang="el">Μαρία Γκιόκα</span><span data-lang="en">Maria Gioka</span></h3>
+          <p class="text-sm text-emerald"><span data-lang="el">Ερευνήτρια Αγοράς Κοσμήματος</span><span data-lang="en">Researcher, Jewelry Market</span></p>
+          <p class="mt-3 text-sm text-gray-700 leading-relaxed">
+            <span data-lang="el">Είναι πτυχιούχος Οικονομικής Επιστήμης από το Οικονομικό Πανεπιστήμιο Αθηνών και κάτοχος δύο μεταπτυχιακών τίτλων στην Εφαρμοσμένη Οικονομική και Χρηματοοικονομική και στην Οικονομική Θεωρία (ΟΠΑ). Σήμερα είναι Υποψήφια Διδάκτορας στο Τμήμα Οικονομικής Επιστήμης του ΟΠΑ, όπου το ερευνητικό της έργο εστιάζει στη μακροχρόνια σχέση του δημοσίου χρέους επιλεγμένων χωρών με μακροοικονομικές μεταβλητές που επηρεάζουν τη δυναμική του. Έχει εργαστεί ως junior ερευνήτρια στο ΕΛΙΑΜΕΠ (2014–2015), ως διοικητική υπάλληλος στην εταιρεία APOLLO (2015–2017) και ως ερευνήτρια στην Τράπεζα της Ελλάδος (2019–2020). Κατά τη διάρκεια των διδακτορικών της σπουδών έχει διδάξει προπτυχιακά και μεταπτυχιακά μαθήματα, εμπειρία που συνέβαλε καθοριστικά στην ικανότητά της να δομεί και να παρουσιάζει με σαφήνεια σύνθετα θεωρητικά και τεχνικά ζητήματα, καθώς και να αναδεικνύει τις συνδέσεις τους με τις δημιουργικές πρακτικές, την αγορά και τη διαδικασία παραγωγής αξίας. Παράλληλα με την ακαδημαϊκή της πορεία, μεγάλωσε στο Ναύπλιο, σε ένα περιβάλλον άμεσα συνδεδεμένο με το κόσμημα. Από νεαρή ηλικία απέκτησε ουσιαστική εμπειρία μέσα από την πολυετή λειτουργία οικογενειακού καταστήματος κοσμημάτων σε μία από τις πιο έντονες τουριστικά αγορές της Ελλάδας. Η καθημερινή της τριβή με την πώληση, την προώθηση και την επαφή με ένα ευρύ ελληνικό και διεθνές αγοραστικό κοινό της προσέφερε βαθιά γνώση των τάσεων και της εμπορικής δυναμικής του κοσμήματος, καθώς και μια σφαιρική ματιά στη γέφυρα συνεργασίας μεταξύ κοσμηματοτεχνίτη και πωλητή, από τον σχεδιασμό και την παραγωγή έως την παρουσίαση, την αφήγηση και την τελική επιλογή του κοσμήματος από τον αγοραστή.</span></span>
+            <span data-lang="en">Maria Gioka holds a degree in Economics from Athens University of Economics and Business (AUEB) and two postgraduate qualifications in Applied Economics and Financial Economics, and in Economic Theory (AUEB). She is currently a PhD candidate in the Department of Economic Science at AUEB, where her research focuses on the long-run relationship between public debt in selected countries and macroeconomic variables that influence its dynamics. Her professional background includes roles as a junior researcher at Hellenic Foundation for European & Foreign Policy (ELIAMEP) (2014–2015), administrative staff at APOLLO (2015–2017) and as a researcher at the Bank of Greece (2019–2020). During her doctoral studies, her teaching portfolio includes undergraduate and graduate courses. This experience has been instrumental in her ability to structure and clearly present complex theoretical and technical issues, and to highlight their links with creative practices, markets, and the process of value creation. Alongside her academic path, she grew up in Nafplio, in an environment closely connected to jewelry. From a young age, she gained substantive experience through the family jewelry business, in one of Greece's busiest tourist markets. Her daily engagement with selling, promoting, and engaging with a broad Greek and international audience has given her deep insight into jewelry trends and the commercial dynamics of the industry, as well as a holistic view of the bridge between craftsmanship and commerce, from design and production to presentation, storytelling, and the buyer's final selection of the piece.</span></span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== TAB: RESEARCH ===================== -->
+<div id="research" class="page">
+  <div class="page-head">
+    <h1 class="text-3xl font-bold"><span data-lang="el">Έρευνα</span><span data-lang="en">Research</span></h1>
+    <div class="gold-line draw"></div>
+  </div>
+  <section class="px-6 py-16">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+      <div class="card bg-white border border-gray-200 p-7 reveal">
+        <div class="placeholder w-full h-56">Infographic 2026</div>
+        <h3 class="mt-4 font-semibold text-emerald-dark"><span data-lang="el">Infographic Edition 2026</span><span data-lang="en">Edition 2026 Infographic</span></h3>
+        <a href="#" class="btn mt-4 text-sm"><span data-lang="el">Προβολή</span><span data-lang="en">View</span></a>
+      </div>
+      <div class="card bg-white border border-gray-200 p-7 reveal">
+        <h3 class="font-semibold text-emerald-dark">Edition 2026</h3>
+        <p class="mt-3 text-sm text-gray-700"><span data-lang="el">Αργυροχρυσοχοΐα & Κοσμηματοποιία σε Κίνηση: Τάσεις, Δεδομένα, Άνθρωποι.</span><span data-lang="en">Goldsmithing & Jewelry Making in Motion: Trends, Data, People.</span></p>
+        <a onclick="openEdition()" class="btn mt-5 text-sm"><span data-lang="el">Ξεφυλλίστε την έκδοση</span><span data-lang="en">Browse the edition</span></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== FLIPBOOK EDITION 2026 ===================== -->
+<div id="flipModal" class="fixed inset-0 z-[100] hidden flex-col" style="background:#D8E9E3">
+  <div class="flex items-center justify-between gap-3 px-4 py-3 text-emerald-dark text-sm">
+    <span class="font-semibold">Edition 2026</span>
+    <div class="flex items-center gap-2">
+      <button class="fb-btn" onclick="pf&&pf.flipPrev()" aria-label="Previous">&#8249;</button>
+      <span id="fbCount" class="w-20 text-center"></span>
+      <button class="fb-btn" onclick="pf&&pf.flipNext()" aria-label="Next">&#8250;</button>
+      <span class="w-4"></span>
+      <button class="fb-btn" onclick="setZoom(zoom-0.25)" aria-label="Zoom out">&minus;</button>
+      <span id="fbZoom" class="w-12 text-center">100%</span>
+      <button class="fb-btn" onclick="setZoom(zoom+0.25)" aria-label="Zoom in">+</button>
+    </div>
+    <button class="fb-btn" onclick="closeEdition()" aria-label="Close">&times;</button>
+  </div>
+  <div id="fbStage" class="flex-1 overflow-auto p-4">
+    <div id="fbSizer" style="margin:0 auto;position:relative">
+      <div id="fbZoomBox" style="transform-origin:0 0;position:absolute;top:0;left:0"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TAB: ACTIVITIES ===================== -->
+<div id="activities" class="page">
+  <div class="page-head">
+    <h1 class="text-3xl font-bold"><span data-lang="el">Δράσεις</span><span data-lang="en">Activities</span></h1>
+    <div class="gold-line draw"></div>
+  </div>
+  <section class="px-6 py-16">
+    <div class="max-w-3xl mx-auto">
+      <div class="card bg-white border border-gray-200 p-7 reveal">
+        <h3 class="font-semibold text-emerald-dark"><span data-lang="el">Συνεντεύξεις</span><span data-lang="en">Interviews</span></h3>
+        <p class="mt-3 text-sm text-gray-700"><span data-lang="el">Σύντομη Περιγραφή</span><span data-lang="en">Short Description</span></p>
+        <p class="mt-4 text-xs uppercase tracking-widest text-gray-500"><span data-lang="el">Αναμένεται Ανακοίνωση</span><span data-lang="en">Coming soon</span></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== TAB: CONTACT ===================== -->
+<div id="contact" class="page">
+  <div class="page-head">
+    <h1 class="text-3xl font-bold"><span data-lang="el">Επικοινωνία</span><span data-lang="en">Contact Us</span></h1>
+    <div class="gold-line draw"></div>
+  </div>
+  <section class="px-6 py-16">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+
+      <!-- FORM -->
+      <div class="md:col-span-2 bg-white border border-gray-200 p-8 reveal">
+        <h2 class="text-xl font-bold text-emerald-dark"><span data-lang="el">Στείλτε μας μήνυμα</span><span data-lang="en">Send us a message</span></h2>
+        <p class="mt-2 text-sm text-gray-600"><span data-lang="el">Για συνεργασίες, ερωτήσεις ή συμμετοχή σε συνέντευξη.</span><span data-lang="en">For collaborations, questions or taking part in an interview.</span></p>
+
+        <!-- Αντικαταστήστε το YOUR_FORM_ID με τον κωδικό σας από το formspree.io -->
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="mt-6 space-y-5">
+          <div class="grid md:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="text-sm font-medium"><span data-lang="el">Ονοματεπώνυμο *</span><span data-lang="en">Full name *</span></span>
+              <input name="name" required class="field" type="text">
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium">Email *</span>
+              <input name="email" required class="field" type="email">
+            </label>
+          </div>
+          <label class="block">
+            <span class="text-sm font-medium"><span data-lang="el">Φορέας / Επιχείρηση</span><span data-lang="en">Organization / Business</span></span>
+            <input name="organization" class="field" type="text">
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium"><span data-lang="el">Μήνυμα *</span><span data-lang="en">Message *</span></span>
+            <textarea name="message" required rows="5" class="field"></textarea>
+          </label>
+          <label class="flex items-start gap-2 text-xs text-gray-600">
+            <input type="checkbox" required class="mt-0.5 accent-emerald-700">
+            <span><span data-lang="el">Συμφωνώ να χρησιμοποιηθούν τα στοιχεία μου μόνο για την απάντηση στο μήνυμά μου.</span><span data-lang="en">I agree that my details will be used only to respond to my message.</span></span>
+          </label>
+          <input type="text" name="_gotcha" class="hidden">
+          <button type="submit" class="btn"><span data-lang="el">Αποστολή</span><span data-lang="en">Send</span></button>
+          <p id="formMsg" class="text-sm font-medium hidden"></p>
+        </form>
+      </div>
+
+      <!-- SIDE INFO -->
+      <div class="space-y-6">
+        <div class="card bg-stone p-7 reveal">
+          <p class="text-xs uppercase tracking-widest text-gray-500">Email</p>
+          <a href="mailto:info@hellenic-goldsmithing-observatory.eu" class="mt-2 block text-emerald font-medium hover:underline break-all text-sm">info@hellenic-goldsmithing-observatory.eu</a>
+        </div>
+        <div class="card bg-stone p-7 reveal">
+          <p class="text-xs uppercase tracking-widest text-gray-500">Social Media</p>
+          <div class="mt-3 flex gap-4">
+            <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener" class="social"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+            <a href="#" aria-label="Facebook" target="_blank" rel="noopener" class="social"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+</main>
+
+<!-- FOOTER (σε όλα τα tabs) -->
+<footer class="bg-emerald text-emerald-dark px-6 py-10 border-t border-gray-200">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between gap-4">
+    <div>
+      <p class="font-semibold"><span data-lang="el">ΕΛΠΑΚ</span><span data-lang="en">HELGO</span></p>
+      <p class="text-sm text-gray-600 mt-1"><span data-lang="el">Ελληνικό Παρατηρητήριο Αργυροχρυσοχοΐας και Κοσμηματοποιίας</span><span data-lang="en">Hellenic Goldsmithing Observatory</span></p>
+    </div>
+  </div>
+  <p class="max-w-6xl mx-auto text-xs text-gray-500 mt-8 border-t border-gray-300 pt-5">
+    <span data-lang="el">© 2026 ΕΛΠΑΚ. Με επιφύλαξη παντός δικαιώματος.</span>
+    <span data-lang="en">© 2026 HelGO. All rights reserved.</span>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script>
+  /* ===== FLIPBOOK: βάλτε εδώ τις σελίδες της έκδοσης (εικόνες JPG/PNG, μία ανά σελίδα) =====
+     π.χ. el:['edition-el/01.jpg','edition-el/02.jpg', ...]
+     Αν μείνουν κενές, εμφανίζονται δοκιμαστικές σελίδες. */
+  const EDITION={ el:[], en:[] };
+
+  let pf=null, zoom=1, baseW=0, baseH=0;
+
+  function openEdition(){
+    const m=document.getElementById('flipModal');
+    m.classList.remove('hidden'); m.classList.add('flex');
+    document.body.style.overflow='hidden';
+    buildBook();
+  }
+  function closeEdition(){
+    const m=document.getElementById('flipModal');
+    m.classList.add('hidden'); m.classList.remove('flex');
+    document.body.style.overflow='';
+    if(pf){pf.destroy();pf=null;}
+  }
+  function buildBook(){
+    if(pf){pf.destroy();pf=null;}
+    const box=document.getElementById('fbZoomBox');
+    box.innerHTML='<div id="fbBook"></div>';
+    const book=document.getElementById('fbBook');
+    const lang=document.documentElement.lang;
+    const single=window.innerWidth<768;
+    const w=Math.round(Math.min(420,(window.innerWidth-48)/(single?1:2)));
+    const h=Math.round(w*1.414);
+    pf=new St.PageFlip(book,{width:w,height:h,size:'fixed',showCover:true,usePortrait:single,maxShadowOpacity:.4,mobileScrollSupport:false});
+    const imgs=EDITION[lang];
+    if(imgs.length){
+      pf.loadFromHTML(imgs.map(src=>{const d=document.createElement('div');d.className='fb-page';d.innerHTML='<img src="'+src+'" alt="">';return d;}));
+    }else{
+      const demo=[];
+      for(let i=1;i<=12;i++){const d=document.createElement('div');d.className='fb-page';d.textContent=(lang==='el'?'Σελίδα ':'Page ')+i;demo.push(d);}
+      pf.loadFromHTML(demo);
+    }
+    pf.on('flip',updCount);
+    baseW=single?w:w*2; baseH=h;
+    zoom=1; setZoom(1); updCount();
+  }
+  function updCount(){
+    if(!pf) return;
+    document.getElementById('fbCount').textContent=(pf.getCurrentPageIndex()+1)+' / '+pf.getPageCount();
+  }
+  function setZoom(z){
+    zoom=Math.min(3,Math.max(0.5,z));
+    document.getElementById('fbZoomBox').style.transform='scale('+zoom+')';
+    const s=document.getElementById('fbSizer');
+    s.style.width=(baseW*zoom)+'px'; s.style.height=(baseH*zoom)+'px';
+    document.getElementById('fbZoom').textContent=Math.round(zoom*100)+'%';
+  }
+  document.addEventListener('keydown',e=>{
+    if(!pf) return;
+    if(e.key==='Escape') closeEdition();
+    if(e.key==='ArrowRight') pf.flipNext();
+    if(e.key==='ArrowLeft') pf.flipPrev();
+  });
+
+  function setLang(l){
+    document.documentElement.lang=l;
+    localStorage.setItem('lang',l);
+    document.getElementById('btn-el').classList.toggle('active',l==='el');
+    document.getElementById('btn-en').classList.toggle('active',l==='en');
+    document.querySelectorAll('[data-ph-el]').forEach(i=>i.placeholder=l==='el'?i.dataset.phEl:i.dataset.phEn);
+    if(pf) buildBook();
+  }
+
+  function toggleBio(btn){
+    const card=btn.closest('.bio');
+    card.classList.toggle('open');
+    const open=card.classList.contains('open');
+    btn.innerHTML=open
+      ? '<span data-lang="el">Λιγότερα −</span><span data-lang="en">Show less −</span>'
+      : '<span data-lang="el">Περισσότερα +</span><span data-lang="en">Read more +</span>';
+  }
+
+  function countUp(el){
+    const to=parseFloat(el.dataset.to), dur=1600, start=performance.now();
+    function step(now){
+      const p=Math.min((now-start)/dur,1), e=1-Math.pow(1-p,3);
+      el.textContent=(to*e).toFixed(2);
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(!en.isIntersecting) return;
+      en.target.classList.add('show');
+      en.target.querySelectorAll('.count').forEach(c=>{
+        if(!c.dataset.done){c.dataset.done=1;countUp(c);}
+      });
+      io.unobserve(en.target);
+    });
+  },{threshold:.15});
+
+  function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    const page=document.getElementById(id);
+    page.classList.add('active');
+    document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===id));
+    localStorage.setItem('activeSectionId',id);
+    window.scrollTo({top:0});
+    page.querySelectorAll('.reveal:not(.show)').forEach(el=>io.observe(el));
+    page.querySelectorAll('.gold-line').forEach(l=>{l.classList.remove('draw');void l.offsetWidth;setTimeout(()=>l.classList.add('draw'),50);});
+  }
+
+  document.getElementById('contactForm').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const f=e.target, msg=document.getElementById('formMsg');
+    const el=document.documentElement.lang==='el';
+    try{
+      const r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+      if(!r.ok) throw 0;
+      f.reset();
+      msg.textContent=el?'Ευχαριστούμε! Το μήνυμά σας εστάλη.':'Thank you! Your message has been sent.';
+      msg.className='text-sm font-medium text-emerald';
+    }catch{
+      msg.textContent=el?'Κάτι πήγε στραβά. Γράψτε μας στο info@hellenic-goldsmithing-observatory.eu':'Something went wrong. Please email info@hellenic-goldsmithing-observatory.eu';
+      msg.className='text-sm font-medium text-red-700';
+    }
+  });
+
+  setLang(localStorage.getItem('lang')||'el');
+  const saved=localStorage.getItem('activeSectionId');
+  showPage(document.getElementById(saved)?.classList.contains('page') ? saved : 'home');
+</script>
+</body>
+</html>
