@@ -219,24 +219,25 @@
         </div>
       </div>
 
-<!-- ===================== FLIPBOOK EDITION 2026 ===================== -->
-<div id="flipModal" class="fixed inset-0 z-[100] hidden flex-col" style="background:#D8E9E3">
-  <div class="flex items-center justify-between gap-3 px-4 py-3 text-emerald-dark text-sm">
-    <span class="font-semibold">Edition 2026</span>
-    <div class="flex items-center gap-2">
-      <button class="fb-btn" onclick="pf&&pf.flipPrev()" aria-label="Previous">&#8249;</button>
-      <span id="fbCount" class="w-20 text-center"></span>
-      <button class="fb-btn" onclick="pf&&pf.flipNext()" aria-label="Next">&#8250;</button>
-      <span class="w-4"></span>
-      <button class="fb-btn" onclick="setZoom(zoom-0.25)" aria-label="Zoom out">&minus;</button>
-      <span id="fbZoom" class="w-12 text-center">100%</span>
-      <button class="fb-btn" onclick="setZoom(zoom+0.25)" aria-label="Zoom in">+</button>
+  <!-- ===================== FLIPBOOK EDITION 2026 ===================== -->
+  <div id="flipModal" class="fixed inset-0 z-[100] hidden flex-col" style="background:#D8E9E3">
+    <div class="flex items-center justify-between gap-3 px-4 py-3 text-emerald-dark text-sm">
+      <span class="font-semibold">Edition 2026</span>
+      <div class="flex items-center gap-2">
+        <button class="fb-btn" onclick="pf&&pf.flipPrev()" aria-label="Previous">&#8249;</button>
+        <span id="fbCount" class="w-20 text-center"></span>
+        <button class="fb-btn" onclick="pf&&pf.flipNext()" aria-label="Next">&#8250;</button>
+        <span class="w-4"></span>
+        <button class="fb-btn" onclick="setZoom(zoom-0.25)" aria-label="Zoom out">&minus;</button>
+        <span id="fbZoom" class="w-12 text-center">100%</span>
+        <button class="fb-btn" onclick="setZoom(zoom+0.25)" aria-label="Zoom in">+</button>
+      </div>
+      <button class="fb-btn" onclick="closeEdition()" aria-label="Close">&times;</button>
     </div>
-    <button class="fb-btn" onclick="closeEdition()" aria-label="Close">&times;</button>
-  </div>
-  <div id="fbStage" class="flex-1 overflow-auto p-4">
-    <div id="fbSizer" style="margin:0 auto;position:relative">
-      <div id="fbZoomBox" style="transform-origin:0 0;position:absolute;top:0;left:0"></div>
+    <div id="fbStage" class="flex-1 overflow-auto p-4">
+      <div id="fbSizer" style="margin:0 auto;position:relative">
+        <div id="fbZoomBox" style="transform-origin:0 0;position:absolute;top:0;left:0"></div>
+      </div>
     </div>
   </div>
 </div>
